@@ -1,6 +1,11 @@
 # Ignore unneeded Unity files
 # --------------------------------------------------
 Temp/
+Library/ScriptAssemblies
+
+/*.csproj
+/*.unityproj
+/*.sln
 
 # Ignore Custom Builds
 # --------------------------------------------------
