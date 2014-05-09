@@ -5,7 +5,7 @@ A Complete Unity Reference Project
 # Features
  - Full complete game
  - Multiplayer (Online, [MasterServer](https://docs.unity3d.com/Documentation/ScriptReference/MasterServer.html)): Semi-Authoratitive
- - Full Menu UI and HUD: Utilizing the awesome power of [Coherent UI](http://coherent-labs.com/)
+ - Full Menu UI and HUD: Utilizing the awesome power of [Coherent UI](http://coherent-labs.com/); HTML, CSS, JS web stack
  	 - Server Browser
  	 - Match Lobby
  	 - Player Customization
@@ -18,6 +18,7 @@ A Complete Unity Reference Project
 
 # Details:
  - Developed in Unity 4.3.1f1
+ - Tested with Coherent UI 1.8.1
  - [Requires Unity Pro(because Coherent UI uses native code)](http://docs.unity3d.com/Documentation/Manual/Plugins.html) to work in the editor. You can build with Unity Free and add the dlls manually. See the [guide I made on using unmanaged Dlls with Unity to get a hint on how to get Coherent UI working](http://ericeastwood.com/blog/17/unity-and-dlls-c-managed-and-c-unmanaged)
 
 # How to use
