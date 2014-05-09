@@ -13,7 +13,7 @@ A Complete Unity Reference Project
 	 - In-game HUD
  - Procedurally generated objects
  - Multiple Levels
- - Sound Effects and Music
+ - Sound Effects and Music + Volume
 
 
 # Details:
@@ -29,3 +29,11 @@ A Complete Unity Reference Project
  - Goto `Edit->Project Settings->Coherent UI->Select UI Folder` and select the `UIResources` folder in the Unity project root
  - You should be able to play it in the editor if you have Unity Pro
 	 - If you have Unity Free, it will only work if you build the project and use [this guide](http://ericeastwood.com/blog/17/unity-and-dlls-c-managed-and-c-unmanaged) to manually copy over Coherent's Dlls
+
+
+
+## Less notable features:
+
+ - Character Controller/Driver: `CharacterDriver.cs`
+ - Camera Controller (Conic): `ConicCameraController.cs`
+ - Master Volume for Music and Soundeffects: `AudioManager.cs`, `AudioBase.cs`
