@@ -1,0 +1,40 @@
+# Ignore unneeded Unity files
+# --------------------------------------------------
+Temp/
+
+# Ignore Custom Builds
+# --------------------------------------------------
+[Bb]uilds/
+
+# Ignore Coherent UI (against licensing): Go get a free evalutation version: http://coherent-labs.com/
+# --------------------------------------------------
+Assets/CoherentUI
+Assets/CoherentUI.meta
+Assets/Standard Assets/Scripts/CoherentUI
+Assets/Standard Assets/Scripts/CoherentUI.meta
+Assets/Standard Assets/Shaders/CoherentUI
+Assets/Standard Assets/Shaders/CoherentUI.meta
+Assets/StreamingAssets/CoherentUI_Host
+Assets/StreamingAssets/CoherentUI_Host.meta
+Assets/StreamingAssets/CoherentUI64_Native.dll
+Assets/StreamingAssets/CoherentUI64_Native.dll.meta
+Assets/StreamingAssets/CoherentUINet.dll64
+Assets/StreamingAssets/CoherentUINet.dll64.meta
+Assets/StreamingAssets/D3DCompiler_43.dll
+Assets/StreamingAssets/D3DCompiler_43.dll.meta
+Assets/StreamingAssets/d3dx9_43.dll
+Assets/StreamingAssets/d3dx9_43.dll.meta
+Assets/Plugins/CoherentUI*
+Assets/Plugins/CoherentUI*.meta
+Assets/Plugins/libCoherentUI_Native.so
+Assets/Plugins/libCoherentUI_Native.so.meta
+Assets/Plugins/iOS/CoherentUI.mm
+Assets/Plugins/iOS/CoherentUI.mm.meta
+Assets/Plugins/iOS/libCoherentUIMobile.a
+Assets/Plugins/iOS/libCoherentUIMobile.a.meta
+Assets/Plugins/Android/CoherentAndroid.jar
+Assets/Plugins/Android/CoherentAndroid.jar.meta
+Assets/Plugins/Android/libCoherentAndroidNative.so
+Assets/Plugins/Android/libCoherentAndroidNative.so.meta
+Assets/WebPlayerTemplates/uiresources
+Assets/WebPlayerTemplates/uiresources.meta
