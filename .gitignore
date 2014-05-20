@@ -1,55 +1,60 @@
 # Ignore unneeded Unity files
 # --------------------------------------------------
-Temp/
-Library/ScriptAssemblies
+Radius/Temp/
+Radius/obj/
+Radius/Library/ScriptAssemblies
 
-/*.csproj
-/*.unityproj
-/*.sln
+Radius/*.csproj
+Radius/*.unityproj
+Radius/*.sln
 
 # Ignore Custom Builds
 # --------------------------------------------------
-[Bb]uilds/
+Radius/[Bb]uilds/
+
+
+# Ignore fonts that we can't include because of their EULA
+Radius/UIResources/fonts/mission_gothic/
 
 # Ignore Coherent UI (against licensing): Go get a free evalutation version: http://coherent-labs.com/
 # --------------------------------------------------
-Assets/CoherentUI
-Assets/CoherentUI.meta
-Assets/Standard Assets/Scripts/CoherentUI
-Assets/Standard Assets/Scripts/CoherentUI.meta
-Assets/Standard Assets/Shaders/CoherentUI
-Assets/Standard Assets/Shaders/CoherentUI.meta
-Assets/StreamingAssets/CoherentUI_Host
-Assets/StreamingAssets/CoherentUI_Host.meta
-Assets/StreamingAssets/CoherentUI64_Native.dll
-Assets/StreamingAssets/CoherentUI64_Native.dll.meta
-Assets/StreamingAssets/CoherentUINet.dll64
-Assets/StreamingAssets/CoherentUINet.dll64.meta
-Assets/StreamingAssets/D3DCompiler_43.dll
-Assets/StreamingAssets/D3DCompiler_43.dll.meta
-Assets/StreamingAssets/d3dx9_43.dll
-Assets/StreamingAssets/d3dx9_43.dll.meta
-Assets/Plugins/CoherentUI*
-Assets/Plugins/CoherentUI*.meta
-Assets/Plugins/libCoherentUI_Native.so
-Assets/Plugins/libCoherentUI_Native.so.meta
-Assets/Plugins/iOS/CoherentUI.mm
-Assets/Plugins/iOS/CoherentUI.mm.meta
-Assets/Plugins/iOS/libCoherentUIMobile.a
-Assets/Plugins/iOS/libCoherentUIMobile.a.meta
-Assets/Plugins/Android/CoherentAndroid.jar
-Assets/Plugins/Android/CoherentAndroid.jar.meta
-Assets/Plugins/Android/libCoherentAndroidNative.so
-Assets/Plugins/Android/libCoherentAndroidNative.so.meta
-Assets/WebPlayerTemplates/uiresources
-Assets/WebPlayerTemplates/uiresources.meta
-Assets/Gizmos/Coherent_UI_docs.png
-Assets/Gizmos/Coherent_UI_docs.png.meta
-Assets/Gizmos/Coherent_UI_inspector.png
-Assets/Gizmos/Coherent_UI_inspector.png.meta
-Assets/Gizmos/Coherent_UI_support.png
-Assets/Gizmos/Coherent_UI_support.png.meta
-Assets/Gizmos/CoherentUIView_icon.png
-Assets/Gizmos/CoherentUIView_icon.png.meta
+Radius/Assets/CoherentUI
+Radius/Assets/CoherentUI.meta
+Radius/Assets/Standard Assets/Scripts/CoherentUI
+Radius/Assets/Standard Assets/Scripts/CoherentUI.meta
+Radius/Assets/Standard Assets/Shaders/CoherentUI
+Radius/Assets/Standard Assets/Shaders/CoherentUI.meta
+Radius/Assets/StreamingAssets/CoherentUI_Host
+Radius/Assets/StreamingAssets/CoherentUI_Host.meta
+Radius/Assets/StreamingAssets/CoherentUI64_Native.dll
+Radius/Assets/StreamingAssets/CoherentUI64_Native.dll.meta
+Radius/Assets/StreamingAssets/CoherentUINet.dll64
+Radius/Assets/StreamingAssets/CoherentUINet.dll64.meta
+Radius/Assets/StreamingAssets/D3DCompiler_43.dll
+Radius/Assets/StreamingAssets/D3DCompiler_43.dll.meta
+Radius/Assets/StreamingAssets/d3dx9_43.dll
+Radius/Assets/StreamingAssets/d3dx9_43.dll.meta
+Radius/Assets/Plugins/CoherentUI*
+Radius/Assets/Plugins/CoherentUI*.meta
+Radius/Assets/Plugins/libCoherentUI_Native.so
+Radius/Assets/Plugins/libCoherentUI_Native.so.meta
+Radius/Assets/Plugins/iOS/CoherentUI.mm
+Radius/Assets/Plugins/iOS/CoherentUI.mm.meta
+Radius/Assets/Plugins/iOS/libCoherentUIMobile.a
+Radius/Assets/Plugins/iOS/libCoherentUIMobile.a.meta
+Radius/Assets/Plugins/Android/CoherentAndroid.jar
+Radius/Assets/Plugins/Android/CoherentAndroid.jar.meta
+Radius/Assets/Plugins/Android/libCoherentAndroidNative.so
+Radius/Assets/Plugins/Android/libCoherentAndroidNative.so.meta
+Radius/Assets/WebPlayerTemplates/uiresources
+Radius/Assets/WebPlayerTemplates/uiresources.meta
+Radius/Assets/Gizmos/Coherent_UI_docs.png
+Radius/Assets/Gizmos/Coherent_UI_docs.png.meta
+Radius/Assets/Gizmos/Coherent_UI_inspector.png
+Radius/Assets/Gizmos/Coherent_UI_inspector.png.meta
+Radius/Assets/Gizmos/Coherent_UI_support.png
+Radius/Assets/Gizmos/Coherent_UI_support.png.meta
+Radius/Assets/Gizmos/CoherentUIView_icon.png
+Radius/Assets/Gizmos/CoherentUIView_icon.png.meta
 
 
