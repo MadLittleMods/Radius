@@ -1,0 +1,39 @@
+.option-block
+{
+	display: flex;
+
+	padding-top: 16px;
+	padding-bottom: 8px;
+
+	border-bottom: 1px solid #000000;
+	border-bottom: 1px solid rgba(0, 0, 0, .5);
+
+	-webkit-transition: all 0.3s ease-out;
+	-moz-transition: all 0.3s ease-out;
+	-o-transition: all 0.3s ease-out;
+	transition: all 0.3s ease-out;
+}
+.option-block:nth-child(even)
+{
+	background: rgba(255, 255, 255, .02);
+}
+
+.option-block:hover
+{
+	background: rgba(255, 255, 255, .05);
+}
+
+
+.option-label
+{
+	flex: 1;
+	font-size: 110%;
+	font-weight: bold;
+}
+
+.option-handle
+{
+	flex: 1;
+
+	text-align: center;
+}

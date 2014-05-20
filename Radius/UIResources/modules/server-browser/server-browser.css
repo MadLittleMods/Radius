@@ -1,0 +1,144 @@
+.server-list
+{
+	border: 2px solid rgba(255, 255, 255, .2);
+
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+}
+
+.server-list-body
+{
+	max-height: 400px;
+	overflow-y: scroll;
+	overflow-x: hidden;
+}
+
+.server-head, .server-row
+{
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start; /* align items in Main Axis */
+	align-items: stretch; /* align items in Cross Axis */
+	align-content: stretch; /* Extra space in Cross Axis */
+}
+
+.server-head
+{
+	background: rgba(0, 0, 0, .2);
+}
+.server-head:after
+{
+	content: '';
+	width: 10px;
+	
+	border-bottom: 1px solid rgba(255, 255, 255, .2);
+	border-bottom-width: 2px;
+}
+
+.server-row
+{
+	-webkit-transition: all 0.1s ease-out;
+	-moz-transition: all 0.1s ease-out;
+	-o-transition: all 0.1s ease-out;
+	transition: all 0.1s ease-out;
+}
+.server-row:nth-child(even)
+{
+	background: rgba(255, 255, 255, .02);
+}
+.server-row:hover
+{
+	background: rgba(255, 255, 255, .1);
+}
+.server-row.selected
+{
+	background: rgba(255, 255, 255, .1);
+
+	-webkit-box-shadow: inset 0px 0px 16px 0px rgba(255, 255, 255, 0.2);
+	box-shadow: inset 0px 0px 16px 0px rgba(255, 255, 255, 0.2);
+}
+
+.server-row-item
+{
+	flex: 1;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+
+	padding: 2px;
+
+	border-bottom: 1px solid rgba(255, 255, 255, .2);
+	border-right: 1px solid rgba(255, 255, 255, .2);
+}
+.server-row-item:last-child
+{
+	border-right: 0;
+}
+.server-row:last-child .server-row-item
+{
+	border-bottom: 0;
+}
+
+
+.server-head .server-row-item
+{
+	font-size: 140%;
+	font-weight: bold;
+	text-transform: uppercase;
+
+	border-bottom-width: 2px;
+}
+
+.server-row-item.pw {
+	flex: 1;
+	text-align: center;
+}
+.server-row-item.lan {
+	flex: 1;
+	text-align: center;
+}
+.server-row-item.server-name {
+	flex: 3;
+}
+.server-row-item.description {
+	flex: 5;
+}
+.server-row-item.players {
+	flex: 1;
+}
+.server-row-item.map {
+	flex: 3;
+}
+.server-row-item.gametype {
+	flex: 3;
+}
+
+
+@media only screen and (max-height: 640px) {
+	.server-list-body
+	{
+		max-height: 200px;
+	}
+}
+
+@media only screen and (max-width: 800px) {
+	
+
+	.server-head .server-row-item
+	{
+		font-size: 110%;
+	}
+}
+
+@media only screen and (max-width: 650px) {
+
+	.server-row-item.players {
+		flex: 2;
+	}
+	.server-row-item.map, .server-row-item.gametype {
+		display: none;
+	}
+
+
+}

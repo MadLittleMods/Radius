@@ -1,0 +1,20 @@
+.game-time-box
+{
+	display: -moz-inline-stack;
+	display: inline-block;
+	vertical-align: middle;
+	zoom: 1;
+	*display: inline;
+
+	padding: 2px;
+
+	background: rgba(0, 0, 0, .2);
+
+	-webkit-border-radius: 2px;
+	border-radius: 2px;
+}
+
+.game-time-box:before
+{
+	content: attr(data-time);
+}

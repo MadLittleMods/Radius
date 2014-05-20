@@ -1,0 +1,80 @@
+<form class="server-creation-form">
+	<div class="form-block">
+		<div class="lbl">
+			<label for="server-name-input-id">Server Name:</label>
+		</div>
+		<div class="bd">
+			<input type="text" name="server-name" id="server-name-input-id" placeholder="My Magnificent Server">
+		</div>
+	</div>
+
+	<div class="form-block">
+		<div class="lbl">
+			<label for="server-lan-input-id">Is Lan?:</label>
+		</div>
+		<div class="bd">
+			<input type="checkbox" name="server-lan" id="server-lan-input-id" value="true">
+		</div>
+	</div>
+
+	<div class="form-block">
+		<div class="lbl">
+			<label for="max-players-input-id">Max Players:</label>
+		</div>
+		<div class="bd">
+			<input type="number" name="max-players" min="1" max="32" value="8" id="max-players-input-id">
+		</div>
+	</div>
+
+	<div class="form-block">
+		<div class="lbl">
+			<label for="server-description-input-id">Description:</label>
+		</div>
+		<div class="bd">
+			<textarea name="server-description" id="server-description-input-id" placeholder="All are Welcome!"></textarea>
+		</div>
+	</div>
+
+	<div class="form-block">
+		<div class="lbl">
+			<label for="server-pw-input-id">Password:</label>
+		</div>
+		<div class="bd">
+			<input type="text" name="server-pw" id="server-pw-input-id">
+		</div>
+	</div>
+
+	<div class="form-block">
+		<div class="lbl">
+			<label for="server-map-input-id">Map:</label>
+		</div>
+		<div class="bd">
+			<select name="server-map" id="server-map-input-id">
+				{{#each levels}}
+					{{> ./server-host-config-map-option.partial }}
+				{{/each}}
+			</select>
+		</div>
+	</div>
+
+	<div class="form-block">
+		<div class="lbl">
+			<label for="server-gametype-input-id">Gametype:</label>
+		</div>
+		<div class="bd">
+			<select name="server-gametype" id="server-gametype-input-id">
+				<option value="territories" selected="true">Territories</option>
+			</select>
+		</div>
+	</div>
+
+
+	<div class="floatleft group">
+		<div class="small-notication-block"></div>
+	</div>
+
+	<div class="floatright group">
+		<input type="submit" class="button-start-server" value="Start Server">
+	</div>
+
+</form>

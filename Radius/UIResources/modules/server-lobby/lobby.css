@@ -1,0 +1,13 @@
+
+
+/* Hide the some game button from the client 
+ * such as the start-game and gametype-settings
+*/
+.isClient .button-start-game, .isClient .button-change-gametype-settings
+{
+	display: none;
+}
+
+@media only screen and (max-width: 800px) {
+	
+}

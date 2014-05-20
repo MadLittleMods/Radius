@@ -1,0 +1,36 @@
+
+
+<div class="hud-holder"></div>
+
+<div class="main-ui-holder">
+
+	<div class="main-ui-layout-wrapper">
+
+		<header>
+			<div class="top-bar">
+				<div class="top-bar-wrapper">
+					<nav class="main-nav">
+						{{#@helpers/include.helper title="Server Browser" tabId="server-browser" active=true }}{{> ./main-nav-item.partial }}{{/helpers/include.helper}}
+						{{#@helpers/include.helper title="Options" tabId="options"}}{{> ./main-nav-item.partial }}{{/helpers/include.helper}}
+						{{#@helpers/include.helper title="<i class=\"icon-power\"></i>" tabId="quit"}}{{> ./main-nav-item.partial }}{{/helpers/include.helper}}
+					</nav>
+				</div>
+			</div>
+		</header>
+
+		<div class="main-ui-layout-body server-browser active">
+			
+		</div>
+
+		<div class="main-ui-layout-body server-lobby">
+			
+		</div>
+
+		<div class="main-ui-layout-body options">
+			
+		</div>
+
+
+	</div>
+
+</div>

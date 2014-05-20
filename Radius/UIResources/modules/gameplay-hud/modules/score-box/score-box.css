@@ -1,0 +1,71 @@
+.score-box
+{
+	position: relative;
+	width: 100%;
+	height: 24px;
+	
+	padding: 1px;
+	
+	background: rgba(100, 100, 100, .5);
+	border: 1px solid rgba(0, 0, 0, .3);
+	box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .1);
+
+	-webkit-border-bottom-right-radius: 8px;
+	-moz-border-radius-bottomright: 8px;
+	border-bottom-right-radius: 8px;
+}
+
+.score-box:after
+{
+	content: attr(data-score);
+	
+	position: absolute;
+	top: 0;
+	right: 108%;
+	
+	font-size: 120%;
+	white-space: nowrap;
+	color: rgba(255, 255, 255, .6);
+
+	text-shadow: 0px 0px 6px #666666;
+	text-shadow: 0px 0px 6px rgba(0, 0, 0, .4);
+
+	-webkit-transition: all 0.1s linear;
+	-moz-transition: all 0.1s linear;
+	-o-transition: all 0.1s linear;
+	transition: all 0.1s linear;
+}
+.score-box.me:after
+{
+	content: "\232A  " attr(data-score);
+}
+
+
+.score-liquid-wrapper
+{
+	position: relative;
+	width: 100%;
+	height: 100%;
+	
+	overflow: hidden;
+	
+	-webkit-border-bottom-right-radius: 6px;
+	-moz-border-radius-bottomright: 6px;
+	border-bottom-right-radius: 6px;
+}
+
+.score-liquid
+{
+	width: 0%;
+	height: 100%;
+		
+	background: rgba(255, 255, 255, .1);
+	border-right: 2px solid rgba(255, 255, 255, .4);
+	
+	box-shadow: inset 0 0 0 2px rgba(0, 0, 0, .1), inset -40px 0 20px -40px rgba(255, 255, 255, .2);
+
+	-webkit-transition: all 0.1s ease-out;
+	-moz-transition: all 0.1s ease-out;
+	-o-transition: all 0.1s ease-out;
+	transition: all 0.1s ease-out;
+}

@@ -1,0 +1,31 @@
+{{!--
+ * Context:
+ * isServer: bool
+ * isClient: bool
+--}}
+
+<div class="lobby-module {{#if isServer}}isServer{{else}}isClient{{/if}}">
+	<h1 class="main-ui-body-title">Lobby</h1>
+
+	<div class="main-content-box-matrix">
+
+		<div class="main-content-box lobby-buttons-content-box new-item">
+			<div class="box-button-matrix">
+				<div class="box-button button-change-gametype-settings"><div><i class="icon-cog icon-2x"></i></div>Gametype Settings</div>
+				<div class="box-button button-change-map"><div><i class="icon-location icon-2x"></i></div><span>Map: <span class="map-name">Pillars</span></span></div>
+				<div class="box-button button-start-game">Start Game</div>
+			</div>
+		</div>
+
+		<div class="main-content-box lobby-party-content-box new-item">
+			<h2 class="main-content-box-title">Party Size <span class="feature party-size">0/1</span></h2>
+			<div class="gamertag-container">
+				{{!-- gamertags here --}}
+			</div>
+		</div>
+
+		
+	</div>
+
+	
+</div>

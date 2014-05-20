@@ -1,0 +1,141 @@
+.dialog
+{
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+
+	pointer-events: none;
+
+	text-align: center;
+}
+.dialog:before
+{
+	content: '';
+
+	display: -moz-inline-stack;
+	display: inline-block;
+	vertical-align: middle;
+	zoom: 1;
+	*display: inline;
+
+	height: 100%;
+}
+
+.dialog-box
+{
+	display: -moz-inline-stack;
+	display: inline-block;
+	vertical-align: middle;
+	zoom: 1;
+	*display: inline;
+
+	position: relative;
+	pointer-events: auto;
+	text-align: left;
+
+	min-width: 250px;
+	max-width: 80%;
+	
+	padding: 4px 8px;
+
+	background: rgba(40, 40, 40, 0.9);
+	border: 1px solid rgba(0, 0, 0, .75);
+	
+	-webkit-box-shadow: inset 0px 0px 12px 0px rgba(0, 0, 0, 0.3), 0px 0px 32px 0px rgba(255, 255, 255, 0.3);
+	box-shadow: inset 0px 0px 12px 0px rgba(0, 0, 0, 0.3), 0px 0px 32px 0px rgba(255, 255, 255, 0.3);
+	
+	-webkit-border-radius: 2px;
+	border-radius: 2px;
+}
+.dialog-box.new-item
+{
+	opacity: 0;
+	-webkit-transform: translateY(-10%);
+	-ms-transform: translateY(-10%);
+	-o-transform: translateY(-10%);
+	transform: translateY(-10%);
+	
+	-webkit-animation: fadeIn 300ms ease forwards, moveZero 300ms ease forwards;
+	-o-animation: fadeIn 300ms ease forwards, moveZero 300ms ease forwards;
+	animation: fadeIn 300ms ease forwards, moveZero 300ms ease forwards;
+}
+.dialog-box.remove-item
+{
+	opacity: 1;
+	-webkit-transform: translateY(0);
+	-ms-transform: translateY(0);
+	-o-transform: translateY(0);
+	transform: translateY(0);
+
+	-webkit-animation: fadeOut 300ms ease forwards, moveDown 300ms ease forwards;
+	-o-animation: fadeOut 300ms ease forwards, moveDown 300ms ease forwards;
+	animation: fadeOut 300ms ease forwards, moveDown 300ms ease forwards;
+}
+
+
+.dialog-top
+{
+	color: rgba(255, 255, 255, 0.6);
+}
+
+.dialog-controls
+{
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+
+	line-height: 0;
+
+	pointer-events: none;
+}
+.dialog-title
+{
+	font-size: 100%;
+	line-height: normal;
+	font-weight: bold;
+	text-transform: uppercase;
+	
+	pointer-events: auto;
+}
+.dialog-exit
+{
+	position: absolute;
+	top: 0;
+	right: 0;
+
+	padding: 5px;
+
+	background: rgba(255, 255, 255, 0.1);
+	border: 1px solid rgba(0, 0, 0, 0.5);
+	border-top: 0;
+	border-right: 0;
+	
+	pointer-events: auto;
+
+	cursor: pointer;
+	cursor: hand;
+
+	-webkit-transition: all 0.3s ease-out;
+	-moz-transition: all 0.3s ease-out;
+	-o-transition: all 0.3s ease-out;
+	transition: all 0.3s ease-out;
+}
+.dialog-exit:hover, .dialog-exit:focus
+{
+	color: rgba(255, 255, 255, 0.8);
+	background: rgba(255, 255, 255, 0.15);
+}
+.dialog-exit i, .dialog-exit i:before
+{
+	display: block;
+}
+
+.dialog-body
+{
+	padding: 8px;
+	padding-top: 2px;
+}

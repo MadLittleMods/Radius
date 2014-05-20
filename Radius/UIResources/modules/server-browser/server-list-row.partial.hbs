@@ -1,0 +1,9 @@
+<div class="server-row" data-guid="{{ guid }}" data-pw-protected="{{#if pwProtected}}true{{else}}false{{/if}}">
+	<div class="server-row-item pw">{{#if pwProtected}}<i class="icon-lock"></i>{{/if}}</div>
+	<div class="server-row-item lan">{{#if isLan}}<i class="icon-lan"></i>{{/if}}</div>
+	<div class="server-row-item server-name">{{ gameName }}</div>
+	<div class="server-row-item description">{{ description }}</div>
+	<div class="server-row-item players">{{ connectedPlayers }}/{{ playerLimit }}</div>
+	<div class="server-row-item map">{{ map }}</div>
+	<div class="server-row-item gametype">{{ gameType }}</div>
+</div>

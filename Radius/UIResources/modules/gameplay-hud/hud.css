@@ -1,0 +1,37 @@
+
+
+.territory-progress-wrapper
+{
+	position: absolute;
+	bottom: 23%;
+
+	width: 100%;
+}
+
+.territory-progress-holder
+{
+	width: 30%;
+	margin: 0 auto;
+}
+
+
+
+
+
+
+.score-holder
+{
+	position: absolute;
+	bottom: 5%;
+	right: 5%;
+
+	width: 30%;
+
+	text-align: right;
+}
+
+.score-holder .score-box
+{
+	margin: 2px 0;
+}
+

@@ -1,0 +1,212 @@
+@font-face {
+	font-family: 'utility-icon-font';
+	src: url('../fonts/utility-icon-font/utility-icon-font.woff') format('woff'),
+		url('../fonts/utility-icon-font/utility-icon-font.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+	font-family: 'utility-icon-font';
+	font-size: 16px;
+	font-weight: normal;
+	font-style: normal;
+	text-decoration: inherit;
+	-webkit-font-smoothing: subpixel-antialiased;
+	speak: none;
+
+	display: inline;
+	width: auto;
+	height: auto;
+	line-height: normal;
+	vertical-align: baseline;
+	background-image: none;
+	background-position: 0% 0%;
+	background-repeat: repeat;
+	margin-top: 0;
+}
+
+.icon-shrink {
+	line-height: 0;
+}
+
+.icon-halfx:before {
+	font-size: 50%;
+}
+
+.icon-2x:before {
+	font-size: 200%;
+}
+
+.icon-3x:before {
+	font-size: 300%;
+}
+
+.icon-4x:before {
+	font-size: 400%;
+}
+
+.icon-center {
+	vertical-align: middle;
+}
+
+/* Animated rotating icon */
+.icon-spin {
+  display: inline-block;
+  -moz-animation: spin 2s infinite linear;
+  -o-animation: spin 2s infinite linear;
+  -webkit-animation: spin 2s infinite linear;
+  animation: spin 2s infinite linear;
+}
+/* Prevent stack and spinners from being taken inline when inside a link */
+a .icon-stack,
+a .icon-spin {
+	display: inline-block;
+	text-decoration: none;
+}
+@-moz-keyframes spin {
+	0% {
+		-moz-transform: rotate(0deg);
+	}
+	100% {
+		-moz-transform: rotate(359deg);
+	}
+}
+@-webkit-keyframes spin {
+	0% {
+		-webkit-transform: rotate(0deg);
+	}
+	100% {
+		-webkit-transform: rotate(359deg);
+	}
+}
+@-o-keyframes spin {
+	0% {
+		-o-transform: rotate(0deg);
+	}
+	100% {
+		-o-transform: rotate(359deg);
+	}
+}
+@-ms-keyframes spin {
+	0% {
+		-ms-transform: rotate(0deg);
+	}
+	100% {
+		-ms-transform: rotate(359deg);
+	}
+}
+@keyframes spin {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(359deg);
+	}
+}
+
+.icon-network:before, .icon-lan:before {
+	content: "\e622";
+}
+.icon-lock:before {
+	content: "\e600";
+}
+.icon-unlocked:before {
+	content: "\e601";
+}
+.icon-eye-blocked:before {
+	content: "\e602";
+}
+.icon-steam:before {
+	content: "\e603";
+}
+.icon-steam2:before {
+	content: "\e604";
+}
+.icon-windows:before {
+	content: "\e605";
+}
+.icon-windows8:before {
+	content: "\e606";
+}
+.icon-finder:before {
+	content: "\e607";
+}
+.icon-apple:before {
+	content: "\e608";
+}
+.icon-tux:before {
+	content: "\e609";
+}
+.icon-android:before {
+	content: "\e60a";
+}
+.icon-key:before {
+	content: "\e60b";
+}
+.icon-key2:before {
+	content: "\e60c";
+}
+.icon-cog:before {
+	content: "\e60d";
+}
+.icon-power:before {
+	content: "\e60e";
+}
+.icon-close:before {
+	content: "\e60f";
+}
+.icon-checkmark:before {
+	content: "\e610";
+}
+.icon-spinner:before {
+	content: "\e611";
+}
+.icon-spinner2:before {
+	content: "\e612";
+}
+.icon-point-up:before {
+	content: "\e613";
+}
+.icon-point-right:before {
+	content: "\e614";
+}
+.icon-point-down:before {
+	content: "\e615";
+}
+.icon-point-left:before {
+	content: "\e616";
+}
+.icon-minus:before {
+	content: "\e617";
+}
+.icon-plus:before {
+	content: "\e618";
+}
+.icon-location:before {
+	content: "\e619";
+}
+.icon-cogs:before {
+	content: "\e61a";
+}
+.icon-earth:before {
+	content: "\e61b";
+}
+.icon-globe:before {
+	content: "\e61c";
+}
+.icon-bug:before {
+	content: "\e61d";
+}
+.icon-user:before {
+	content: "\e61e";
+}
+.icon-users:before {
+	content: "\e61f";
+}
+.icon-bubbles:before {
+	content: "\e620";
+}
+.icon-menu:before {
+	content: "\e621";
+}

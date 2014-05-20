@@ -1,0 +1,36 @@
+{{!--
+ * Context:
+ * servers: server object
+--}}
+
+<h1 class="main-ui-body-title">Server Browser</h1>
+
+<div class="main-content-box-matrix">
+	<div class="main-content-box new-item">
+		<div class="server-list">
+			<div class="server-head">
+				<div class="server-row-item pw" title="Password Protected?"><i class="icon-lock"></i></div>
+				<div class="server-row-item lan" title="LAN Server?"><i class="icon-lan"></i></div>
+				<div class="server-row-item server-name">Server Name</div>
+				<div class="server-row-item description">Description</div>
+				<div class="server-row-item players">Players</div>
+				<div class="server-row-item map">Map</div>
+				<div class="server-row-item gametype">GameType</div>
+			</div>
+			<div class="server-list-body">
+				{{#each servers}}
+					{{> ./server-list-row.partial }}
+				{{/each}}
+			</div>
+		</div>
+
+
+		<div class="box-button-matrix half-button">
+			<div class="box-button button-host-server">Host Server</div>
+			<div class="box-button button-refresh-server-list">Refresh</div>
+			<div class="box-button button-connect">Connect</div>
+		</div>
+
+		<div class="notification-block"></div>
+	</div>
+</div>

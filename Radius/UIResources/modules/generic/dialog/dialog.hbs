@@ -1,0 +1,13 @@
+<div class="dialog{{#if dClass}} {{ dClass }}{{/if}}">
+	<div class="dialog-box draggable new-item">
+		<div class="dialog-top">
+			{{#if title}}<h3 class="dialog-title">{{ title }}</h1>{{/if}}
+			<div class="dialog-controls">
+				<div class="dialog-exit"><i class="icon-close icon-halfx"></i></div>
+			</div>
+		</div>
+		<div class="dialog-body">
+			{{{ body }}}
+		</div>
+	</div>
+</div>

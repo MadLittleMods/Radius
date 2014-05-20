@@ -1,0 +1,54 @@
+.map-holder
+{
+	display: flex;
+	flex-direction: row;
+
+	justify-content: space-between; /* align items in Main Axis */
+	align-items: flex-start; /* align items in Cross Axis */
+	align-content: space-around; /* Extra space in Cross Axis */
+	
+	flex-wrap: wrap;
+}
+
+
+.map-item
+{
+	position: relative;
+	width: 24%;
+	min-height: 100px;
+
+	padding: 3px;
+	
+	background: rgba(0, 0, 0, .2);
+	border: 1px solid #000000;
+	
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+}
+
+/* one item */
+.map-item:first-child:nth-last-child(1) {
+	width: 100%;
+}
+
+/* two items */
+.map-item:first-child:nth-last-child(2),
+.map-item:first-child:nth-last-child(2) ~ .map-item {
+	width: 49%;
+}
+
+/* three items */
+.map-item:first-child:nth-last-child(3),
+.map-item:first-child:nth-last-child(3) ~ .map-item {
+	width: 32.3333%;
+}
+
+
+.map-item-title
+{
+	position: absolute;
+	bottom: 0;
+
+	width: 100%;
+}
