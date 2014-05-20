@@ -21,7 +21,10 @@ A Complete Unity Reference Project
  - Tested with Coherent UI 1.8.1
  - [Requires Unity Pro(because Coherent UI uses native code)](http://docs.unity3d.com/Documentation/Manual/Plugins.html) to work in the editor. You can build with Unity Free and add the dlls manually. See the [guide I made on using unmanaged Dlls with Unity to get a hint on how to get Coherent UI working](http://ericeastwood.com/blog/17/unity-and-dlls-c-managed-and-c-unmanaged)
 
-# How to use
+# Getting Started (Setup)
+
+[![Radius: Getting Started Guide](http://i.imgur.com/Qz3Msr2.png)](http://www.youtube.com/watch?v=ehRKmvcdxFg)
+
  - Clone/Download the repo
  - Open in Unity
  - Import the Coherent UI package
