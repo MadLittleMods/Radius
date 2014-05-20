@@ -4,7 +4,7 @@ A Complete Unity Reference Project
 
 # Features
  - Full complete game
- - Multiplayer (Online, [MasterServer](https://docs.unity3d.com/Documentation/ScriptReference/MasterServer.html)): Semi-Authoratitive
+ - Multiplayer (Online([MasterServer](https://docs.unity3d.com/Documentation/ScriptReference/MasterServer.html)) and LAN): Semi-Authoratitive
  - Full Menu UI and HUD: Utilizing the awesome power of [Coherent UI](http://coherent-labs.com/); HTML, CSS, JS web stack
  	 - Server Browser
  	 - Match Lobby
