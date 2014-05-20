@@ -36,6 +36,10 @@ Radius/Assets/StreamingAssets/d3dx9_43.dll
 Radius/Assets/StreamingAssets/d3dx9_43.dll.meta
 Radius/Assets/Plugins/CoherentUI*
 Radius/Assets/Plugins/CoherentUI*.meta
+Radius/Assets/Plugins/D3DCompiler_43.dll
+Radius/Assets/Plugins/D3DCompiler_43.dll.meta
+Radius/Assets/Plugins/d3dx9_43.dll
+Radius/Assets/Plugins/d3dx9_43.dll.meta
 Radius/Assets/Plugins/libCoherentUI_Native.so
 Radius/Assets/Plugins/libCoherentUI_Native.so.meta
 Radius/Assets/Plugins/iOS/CoherentUI.mm
