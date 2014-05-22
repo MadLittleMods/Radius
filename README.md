@@ -2,6 +2,8 @@
 
 A Complete Unity Reference Project 
 
+This project is meant to be functionally impressive example a complete game. It is not made to be fun or interesting for a non-developer.
+
 # Features
  - Full complete game
  - Multiplayer (Online([MasterServer](https://docs.unity3d.com/Documentation/ScriptReference/MasterServer.html)) and LAN): Semi-Authoratitive
@@ -35,7 +37,7 @@ A Complete Unity Reference Project
 
 
 
-## Less notable features:
+## Other features:
 
  - Character Controller/Driver: `CharacterDriver.cs`
  - Camera Controller (Conic): `ConicCameraController.cs`
