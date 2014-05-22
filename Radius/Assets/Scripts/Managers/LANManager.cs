@@ -17,8 +17,25 @@ using System.Collections.Generic;
 public class LANManager : MonoBehaviour {
 
 
-	public delegate void RequestReceivedEventHandler(string message);
-	public event RequestReceivedEventHandler OnRequestReceived;
+	public delegate void ServerListUpdatedEventHandler(ServerData[] serverList);
+	public event ServerListUpdatedEventHandler OnServerListUpdated;
+
+	delegate void RequestReceivedEventHandler(string message);
+	event RequestReceivedEventHandler OnRequestReceived;
+
+	delegate void ServerDataReceivedEventHandler(string message);
+	event ServerDataReceivedEventHandler OnServerDataReceived;
+
+
+	// Use this to trigger the event
+	protected virtual void ThisServerListUpdated(ServerData[] serverList)
+	{
+		ServerListUpdatedEventHandler handler = OnServerListUpdated;
+		if(handler != null)
+		{
+			handler(serverList);
+		}
+	}
 
 	// Use this to trigger the event
 	protected virtual void ThisRequestReceived(string message)
@@ -30,8 +47,7 @@ public class LANManager : MonoBehaviour {
 		}
 	}
 
-	public delegate void ServerDataReceivedEventHandler(string message);
-	public event ServerDataReceivedEventHandler OnServerDataReceived;
+
 	
 	// Use this to trigger the event
 	protected virtual void ThisServerDataReceived(string message)
@@ -316,6 +332,33 @@ public class LANManager : MonoBehaviour {
 	void ParseServerData(string receivedString)
 	{
 		ServerData receivedServerData = new ServerData(receivedString);
+
+		bool entryUpdated = false;
+		// Check if list is going to add it for the first time
+		// This is just a quick check first before looking at equality
+		entryUpdated = !this.serverList.ContainsKey(receivedServerData.guid);
+		// If we haven't determined that the entry has been updated, we need to check for equality
+		if(!entryUpdated)
+		{
+			// We know that the guid key exists, because we tested above "ContainsKey"
+			entryUpdated = !this.serverList[receivedServerData.guid].Equals(receivedServerData);
+		}
+
+		// Put the received server data in the server list
 		this.serverList[receivedServerData.guid] = receivedServerData;
+
+		// If the entry was updated, fire the event
+		if(entryUpdated)
+			this.ThisServerListUpdated(new List<ServerData>(this.ServerList.Values).ToArray());
 	}
+
+
+
+	[ContextMenu("Print Server List")]
+	void DebugPrintServerList()
+	{
+		Debug.Log(new List<ServerData>(this.ServerList.Values).ToDebugString());
+	}
+
+
 }

@@ -11,7 +11,7 @@ using UnityEngine;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-//using Coherent.UI;
+using Coherent.UI;
 using Coherent.UI.Binding;
 
 public class PlayerManager : MonoBehaviour {

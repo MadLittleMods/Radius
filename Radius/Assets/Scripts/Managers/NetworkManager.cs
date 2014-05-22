@@ -177,15 +177,15 @@ public class NetworkManager : MonoBehaviour {
 	}
 
 
-	public Dictionary<string, ServerData> CombinedServerList
+	public ReadOnlyDictionary<string, ServerData> CombinedServerList
 	{
 		get {
 			if(this.lanManager)
-				if(this.lanManager.ServerList != null)
-					return this.ServerList.Concat(this.lanManager.ServerList).GroupBy(d => d.Key)
-						.ToDictionary (d => d.Key, d => d.First().Value);
+				if(this.lanManager.ServerList != null && this.lanManager.ServerList.Count > 0)
+					return new ReadOnlyDictionary<string, ServerData>(this.ServerList.Concat(this.lanManager.ServerList).GroupBy(d => d.Key)
+						.ToDictionary (d => d.Key, d => d.First().Value));
 
-			return new Dictionary<string, ServerData>(this.ServerList);
+			return new ReadOnlyDictionary<string, ServerData>(this.ServerList);
 		}
 	}
 
@@ -252,7 +252,8 @@ public class NetworkManager : MonoBehaviour {
 		DontDestroyOnLoad(this.gameObject);
 		networkView.group = 1;
 
-		this.lanManager.OnServerDataReceived += (message) => {
+		this.lanManager.OnServerListUpdated += (serverList) => {
+			// Fire the overrall network server list updated
 			this.ThisServerListUpdated(this.CombinedServerListArray);
 		};
 	}
@@ -281,12 +282,6 @@ public class NetworkManager : MonoBehaviour {
 
 				// Stop listening for LAN servers
 				this.lanManager.StopDiscovery();
-
-				// Sorry we couldn't find any servers.
-				// If we do find servers it will be in `OnMasterServerEvent(...)`
-				this.serverList.Clear();
-				
-				this.ThisServerListUpdated(this.CombinedServerListArray); // Fire Event
 			}
 		}
 	}
@@ -327,8 +322,6 @@ public class NetworkManager : MonoBehaviour {
 		
 		// We will use this later on when the game starts
 		this.gameManager.SelectedLevel = serverMap;
-		
-		
 		
 		Network.InitializeSecurity();
 		Network.incomingPassword = serverPassword;
@@ -413,7 +406,11 @@ public class NetworkManager : MonoBehaviour {
 		});
 		/* */
 
+		this.serverList.Clear();
 		this.lanManager.ClearServerList();
+		// We cleared the lists so fire the event
+		this.ThisServerListUpdated(this.CombinedServerListArray); // Fire Event
+
 		// Start finding servers that are LAN
 		this.lanManager.StartDiscovery();
 
@@ -703,4 +700,17 @@ public class NetworkManager : MonoBehaviour {
 		return response;
 	}
 
+
+
+	[ContextMenu("Print Server List")]
+	void DebugPrintServerList()
+	{
+		Debug.Log(new List<ServerData>(this.ServerList.Values).ToDebugString());
+	}
+
+	[ContextMenu("Print Combined Server List")]
+	void DebugPrintCombinedServerList()
+	{
+		Debug.Log(new List<ServerData>(this.CombinedServerList.Values).ToDebugString());
+	}
 }

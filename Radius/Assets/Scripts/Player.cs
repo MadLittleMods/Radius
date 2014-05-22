@@ -170,17 +170,24 @@ public class Player : MonoBehaviour {
 	}
 
 	void OnNetworkInstantiate(NetworkMessageInfo info) {
-		Debug.Log("New Player Instantiated: " + networkView.owner.guid);
+		Debug.Log("New Player Instantiated. guid: " + networkView.owner.guid + "viewId: " + networkView.viewID);
 		
 		// Add players to managers
 		// Only the server can spread players across the space
 		// Because only the server knows the actual guid
+		// Ask the server for the guid when we are created
 		if(Network.isServer)
-		{
-			networkView.RPC("RPC_Player_AddPlayer", RPCMode.AllBuffered, networkView.owner.guid);
-		}
+			this.RPC_Player_AddPlayer(networkView.owner.guid);
+		else
+			networkView.RPC("RPC_RequestPlayerInit", RPCMode.Server);
 	}
-	
+
+	[RPC]
+	public void RPC_RequestPlayerInit(NetworkMessageInfo info)
+	{
+		if(Network.isServer)
+			networkView.RPC("RPC_Player_AddPlayer", info.sender, networkView.owner.guid);
+	}
 
 	[RPC]
 	public void RPC_Player_AddPlayer(string guid)

@@ -231,6 +231,48 @@ public class ServerData
 		return this.GenerateSeparatedString(lanValues);
 	}
 
+	public override bool Equals(object obj)
+	{
+		ServerData sData = obj as ServerData;
+		return sData != null ? this.Equals(sData) : false;
+	}
+	public bool Equals(ServerData sData)
+	{
+		// Tried to put these in order of quickest to fail if differnt
+		return sData != null
+			&& this.status == sData.status 
+			&& this.guid == sData.guid 
+			&& this.ip == sData.ip
+			&& this.port == sData.port
+			&& this.connectedPlayers == sData.connectedPlayers
+			&& this.useNat == sData.useNat
+			&& this.pwProtected == sData.pwProtected
+			&& this.serverName == sData.serverName
+			&& this.description == sData.description
+			&& this.playerLimit == sData.playerLimit
+			&& this.map == sData.map
+			&& this.gameType == sData.gameType
+			&& this.isLan == sData.isLan;
+	}
+
+	public override int GetHashCode()
+	{
+		return Int32.Parse(this.guid);
+	}
+
+	// Nicely print the ServerData as a single string
+	public string ToDebugString()
+	{
+		string debugString = "{";
+
+		debugString += this.status.ToString() + ", ";
+		debugString += (this.useNat ? this.guid : this.ip+":"+this.port) + ", ";
+		debugString += "name="+this.serverName;
+
+		debugString += "}";
+
+		return debugString;
+	}
 
 
 	// --------------------------------------------------------------
