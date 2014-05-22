@@ -128,17 +128,7 @@ public static class ExtensionMethods
 		var type = objectToCheck.GetType();
 		return type.GetMethod(methodName) != null;
 	}
-	
-	static IEnumerable<MethodInfo> GetExtensionMethods(Assembly assembly, Type extendedType)
-	{
-		var query = from type in assembly.GetTypes()
-			where type.IsSealed && !type.IsGenericType && !type.IsNested
-				from method in type.GetMethods(BindingFlags.Static | BindingFlags.Public | BindingFlags.NonPublic)
-				where method.IsDefined(typeof(ExtensionAttribute), false)
-				where method.GetParameters()[0].ParameterType == extendedType
-				select method;
-		return query;
-	}
+
 	public static bool HasMethodOrExtensionMethod(this object objectToCheck, string methodName)
 	{
 		// Checks for method in class or extension method in ExtensionMethods class
@@ -154,6 +144,17 @@ public static class ExtensionMethods
 		}
 		
 		return false;
+	}
+
+	static IEnumerable<MethodInfo> GetExtensionMethods(Assembly assembly, Type extendedType)
+	{
+		var query = from type in assembly.GetTypes()
+			where type.IsSealed && !type.IsGenericType && !type.IsNested
+				from method in type.GetMethods(BindingFlags.Static | BindingFlags.Public | BindingFlags.NonPublic)
+				where method.IsDefined(typeof(ExtensionAttribute), false)
+				where method.GetParameters()[0].ParameterType == extendedType
+				select method;
+		return query;
 	}
 	
 	public static MethodInfo GetMethodOrNull(this object objectToCheck, string methodName)
