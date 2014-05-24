@@ -401,7 +401,9 @@ public class NetworkManager : MonoBehaviour {
 		/* */
 		this.internetTapQueue.QueueIfOnline(() => {
 			// Get servers from the masterserver (online)
+			Debug.Log("MasterServer.ClearHostList()");
 			MasterServer.ClearHostList();
+			Debug.Log("MasterServer.RequestHostList");
 			MasterServer.RequestHostList(this.uniqueGameName);
 		});
 		/* */
@@ -453,11 +455,12 @@ public class NetworkManager : MonoBehaviour {
 			{
 				ServerData closedServerData = new ServerData();
 				closedServerData.status = ServerData.ServerStatusCode.Closed;
+				closedServerData.serverName = "nojoin";
 				closedServerData.description = "closed";
 				closedServerData.playerLimit = -1;
 				closedServerData.map = "nomap";
 				closedServerData.gameType = "nogametype";
-				MasterServer.RegisterHost(this.uniqueGameName, "nojoin", closedServerData.ToSepString());
+				MasterServer.RegisterHost(this.uniqueGameName, closedServerData.serverName, closedServerData.ToSepString());
 			}
 		}
 
