@@ -73,22 +73,15 @@ public static class ExtensionMethods
 
 
 	// Dictionary GetValueOrDefault
-	public static TValue GetValueOrDefault<TKey, TValue>
-		(this IDictionary<TKey, TValue> dictionary, 
-		 TKey key,
-		 TValue defaultValue)
+	public static TValue GetValueOrDefault<TKey, TValue>(this IDictionary<TKey, TValue> dictionary, TKey key, TValue defaultValue)
 	{
 		TValue value;
 		return dictionary.TryGetValue(key, out value) ? value : defaultValue;
 	}
-	public static TValue GetValueOrDefault<TKey, TValue>
-		(this IDictionary<TKey, TValue> dictionary,
-		 TKey key,
-		 Func<TValue> defaultValueProvider)
+	public static TValue GetValueOrDefault<TKey, TValue>(this IDictionary<TKey, TValue> dictionary, TKey key, Func<TValue> defaultValueProvider)
 	{
 		TValue value;
-		return dictionary.TryGetValue(key, out value) ? value
-			: defaultValueProvider();
+		return dictionary.TryGetValue(key, out value) ? value : defaultValueProvider();
 	}
 
 
@@ -108,11 +101,6 @@ public static class ExtensionMethods
 
 
 
-	// Usage: ParseEnum<AudioBase.AudioType>("Music")
-	public static T ParseEnum<T>( string value )
-	{
-		return (T) Enum.Parse( typeof( T ), value, true );
-	}
 
 
 
@@ -146,17 +134,6 @@ public static class ExtensionMethods
 		return false;
 	}
 
-	static IEnumerable<MethodInfo> GetExtensionMethods(Assembly assembly, Type extendedType)
-	{
-		var query = from type in assembly.GetTypes()
-			where type.IsSealed && !type.IsGenericType && !type.IsNested
-				from method in type.GetMethods(BindingFlags.Static | BindingFlags.Public | BindingFlags.NonPublic)
-				where method.IsDefined(typeof(ExtensionAttribute), false)
-				where method.GetParameters()[0].ParameterType == extendedType
-				select method;
-		return query;
-	}
-	
 	public static MethodInfo GetMethodOrNull(this object objectToCheck, string methodName)
 	{
 		// Get MethodInfo if it is available in the class
@@ -187,6 +164,18 @@ public static class ExtensionMethods
 				return methodEntry;
 		
 		return null;
+	}
+
+	// via: http://stackoverflow.com/a/299526/796832
+	static IEnumerable<MethodInfo> GetExtensionMethods(Assembly assembly, Type extendedType)
+	{
+		var query = from type in assembly.GetTypes()
+			where type.IsSealed && !type.IsGenericType && !type.IsNested
+				from method in type.GetMethods(BindingFlags.Static | BindingFlags.Public | BindingFlags.NonPublic)
+				where method.IsDefined(typeof(ExtensionAttribute), false)
+				where method.GetParameters()[0].ParameterType == extendedType
+				select method;
+		return query;
 	}
 
 

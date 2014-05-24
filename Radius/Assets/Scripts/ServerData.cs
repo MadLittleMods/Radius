@@ -176,7 +176,7 @@ public class ServerData
 		bool corrupt = false;
 		
 		// 1:guid + 2:serverName + 3:serverDescription + 4:status + 5:isLan + 6:pwProtected + 7:connectedPlayers + 8:playerLimit +  + + 9:serverMap + 10:serverGameType 
-		Dictionary<string, string> chunks = this.ParseSeparatedStrToDict(separatedString);
+		Dictionary<string, string> chunks = UtilityMethods.ParseSeparatedStrToDict(separatedString);
 
 		this.ip = chunks.GetValueOrDefault("ip", "");
 		this.port = 0;
@@ -228,7 +228,7 @@ public class ServerData
 			{"gameType", this.gameType}
 		};
 
-		return this.GenerateSeparatedString(lanValues);
+		return UtilityMethods.GenerateSeparatedString(lanValues);
 	}
 
 	public override bool Equals(object obj)
@@ -275,27 +275,5 @@ public class ServerData
 	}
 
 
-	// --------------------------------------------------------------
-	// --------------------------------------------------------------
 
-	Dictionary<string, string> ParseSeparatedStrToDict(string separatedString)
-	{
-		// separatedString should be formatted as: "key:value~anotherkey:anothervalue~again:andagain"
-		//Debug.Log(separatedString);
-		var valueDictionary = new Dictionary<string, string>();
-
-		MatchCollection matches = Regex.Matches(separatedString, @"([^~:;]*):([^~:;]*)");
-		foreach (Match match in matches)
-		{
-			//Debug.Log(match.Groups[1].Value + " : " + match.Groups[2].Value);
-			valueDictionary[WWW.UnEscapeURL(match.Groups[1].Value)] = WWW.UnEscapeURL(match.Groups[2].Value);
-		}
-
-		return valueDictionary;
-	}
-
-	string GenerateSeparatedString(Dictionary<string, string> valueDictionary)
-	{
-		return string.Join("~", valueDictionary.Select(x => WWW.EscapeURL(x.Key) + ":" + WWW.EscapeURL(x.Value)).ToArray());
-	}
 }

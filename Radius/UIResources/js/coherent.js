@@ -88,6 +88,7 @@
 				var reg = handlers[index];
 
 				// mlm debug mod
+				/* * /
 				if (!(reg.code == handler && reg.context == context)) {
 					console.groupCollapsed("COUI.off: " + handler.name);
 					if (reg.code != handler)
@@ -102,6 +103,7 @@
 					}
 					console.groupEnd();
 				}
+				/* */
 
 				if (reg.code == handler && reg.context == context) {
 					break;

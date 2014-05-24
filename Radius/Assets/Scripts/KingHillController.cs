@@ -160,7 +160,7 @@ public class KingHillController : MonoBehaviour {
 		this.proRing.radius = (this.proRing.numSides*textureToMeshWidth)/(2*Mathf.PI);
 		
 		//if (Application.isPlaying)
-		this.proRing.RecalculateRingMesh();
+		this.proRing.RecalculateMesh();
 	}
 	
 	void UpdateColliderBounds()

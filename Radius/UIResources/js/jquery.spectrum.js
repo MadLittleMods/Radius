@@ -859,6 +859,9 @@
             }
 
             opts[optionName] = optionValue;
+            
+            if(optionName == 'color')
+                set(opts[optionName]);
             applyOptions();
         }
 

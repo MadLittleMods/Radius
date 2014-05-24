@@ -56,6 +56,6 @@ public class OptionsUI : MonoBehaviour {
 	public float GetMasterVolume(string audioTypeString)
 	{
 		// Return the master volume for that type
-		return this.audioManager.GetMasterVolume(ExtensionMethods.ParseEnum<AudioBase.AudioType>(audioTypeString));
+		return this.audioManager.GetMasterVolume(UtilityMethods.ParseEnum<AudioBase.AudioType>(audioTypeString));
 	}
 }
