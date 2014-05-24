@@ -42,3 +42,17 @@ This project is meant to be functionally impressive example a complete game. It 
  - Character Controller/Driver: `CharacterDriver.cs`
  - Camera Controller (Conic): `ConicCameraController.cs`
  - Master Volume for Music and Soundeffects: `AudioManager.cs`, `AudioBase.cs`
+ 
+
+# Changelog:
+
+`0.2`:
+ - Cleaned up `Assets/Scripts/ProceduralMeshes/` scripts
+ - Added procedural tiling ground/floor `TextureTilingController.cs`
+ - Profile box color initial color now is the color of that player
+ - Added `UtilityMethods.cs`
+ 
+`0.1`:
+ - Initial code commited
+ - Gameplay, UI, sound, networking
+
