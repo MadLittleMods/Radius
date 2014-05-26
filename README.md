@@ -48,6 +48,7 @@ This project is meant to be functionally impressive example a complete game. It 
 
 `0.2.1`:
  - Updated NetworkManager disconnect logic
+ -  Removed `Radius/Library/` because it can be regenerated when opening project.
 
 `0.2`:
  - Cleaned up `Assets/Scripts/ProceduralMeshes/` scripts
