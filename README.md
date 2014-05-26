@@ -46,6 +46,9 @@ This project is meant to be functionally impressive example a complete game. It 
 
 # Changelog:
 
+`0.2.1`:
+ - Updated NetworkManager disconnect logic
+
 `0.2`:
  - Cleaned up `Assets/Scripts/ProceduralMeshes/` scripts
  - Added procedural tiling ground/floor `TextureTilingController.cs`
