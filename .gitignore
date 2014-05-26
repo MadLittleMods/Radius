@@ -2,7 +2,7 @@
 # --------------------------------------------------
 Radius/Temp/
 Radius/obj/
-Radius/Library/ScriptAssemblies
+Radius/Library/
 
 Radius/*.csproj
 Radius/*.unityproj
