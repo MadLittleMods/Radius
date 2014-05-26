@@ -18,10 +18,14 @@ public class InGameUI : MonoBehaviour {
 	private CoherentUIView m_View;
 	private bool viewReady = false;
 
-	public PlayerManager playerManager;
-	public TerritoryManager territoryManager;
-	public ScoreManager scoreManager;
-	public GameManager gameManager;
+	[SerializeField]
+	private PlayerManager playerManager;
+	[SerializeField]
+	private TerritoryManager territoryManager;
+	[SerializeField]
+	private ScoreManager scoreManager;
+	[SerializeField]
+	private GameManager gameManager;
 
 	private MonoBehaviour currentTerritory;
 

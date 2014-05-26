@@ -19,8 +19,10 @@ public class GeneralUI : MonoBehaviour {
 	private CoherentUIView m_View;
 	private bool viewReady = false;
 
-	public GameManager gameManager;
-	public PlayerManager playerManager;
+	[SerializeField]
+	private GameManager gameManager;
+	[SerializeField]
+	private PlayerManager playerManager;
 
 	// Use this for initialization
 	void Start () {

@@ -52,7 +52,8 @@ public class TerritoryManager : MonoBehaviour {
 		}
 	}
 
-	public GameManager gameManager;
+	[SerializeField]
+	private GameManager gameManager;
 	
 	List<TerritoryController> territoryList = new List<TerritoryController>();
 

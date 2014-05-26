@@ -134,11 +134,15 @@ public class NetworkManager : MonoBehaviour {
 		}
 	}
 
+	[SerializeField]
+	private PlayerManager playerManager;
+	[SerializeField]
+	private GameManager gameManager;
+	[SerializeField]
+	private LANManager lanManager;
+	[SerializeField]
+	private InternetTapQueue internetTapQueue;
 
-	public PlayerManager playerManager;
-	public GameManager gameManager;
-	public LANManager lanManager;
-	public InternetTapQueue internetTapQueue;
 
 	public float refreshTimeOut = 5f; // Seconds until we stop "looking" for servers
 
@@ -216,6 +220,8 @@ public class NetworkManager : MonoBehaviour {
 		}
 	}
 
+
+	// See: http://answers.unity3d.com/questions/660868/random-masterservereventregistrationsucceeded-on-p.html
 	private bool _serverRegistered;
 	public bool ServerRegistered
 	{
@@ -446,6 +452,22 @@ public class NetworkManager : MonoBehaviour {
 
 	}
 
+	public void DisconnectCleanUp(bool internetAccess = false)
+	{	
+		// Hide the server (change the fields things like "closed"
+		this.HideServerFromMasterServer(internetAccess);
+		
+		// Clear the ServerData
+		this.ServerData = new ServerData();
+
+		// Then disconnect because we need to have the server running to `MasterServer.RegisterHost` when we hide
+		Network.Disconnect();
+
+		// No longer registered
+		this.ServerRegistered = false;
+
+	}
+
 	public void HideServerFromMasterServer(bool internetAccess = false)
 	{
 		// This basically does UnregisterHost() since `MasterServer.UnregisterHost();` doesn't work
@@ -461,6 +483,9 @@ public class NetworkManager : MonoBehaviour {
 				closedServerData.map = "nomap";
 				closedServerData.gameType = "nogametype";
 				MasterServer.RegisterHost(this.uniqueGameName, closedServerData.serverName, closedServerData.ToSepString());
+				
+				// Then unregister the host, but this doesn't work...
+				MasterServer.UnregisterHost();
 			}
 		}
 
@@ -472,26 +497,14 @@ public class NetworkManager : MonoBehaviour {
 
 		// Stop telling everyone on LAN about the server
 		this.lanManager.StopListening();
-	
-		// Clear the ServerData
-		this.ServerData = new ServerData();
 
 		this.internetTapQueue.QueueIfOnline(() => {
 			// Hide the server (change the fields things like "closed"
-			this.HideServerFromMasterServer(true);
-			// Then disconnect because we need to have the server running to `MasterServer.RegisterHost` when we hide
-			Network.Disconnect();
-			// Then unregister the host, but this doesn't work...
-			MasterServer.UnregisterHost();
-
-			this.ServerRegistered = false;
-
-
+			this.DisconnectCleanUp(true);
 			Debug.Log("Disconnected Server: " + Network.isServer);
 		}, () => {
 			// Even if we don't have internet we still need to disconnect
-			Network.Disconnect();
-			this.ServerRegistered = false;
+			this.DisconnectCleanUp(false);
 			Debug.Log("Disconnected Server: " + Network.isServer);
 		});
 
@@ -570,14 +583,14 @@ public class NetworkManager : MonoBehaviour {
 		// We are not connected anymore
 		this.IsConnected = false;
 
-		this.DisconnectCleanUp();
+		this.PlayerDisconnectCleanUp();
 
 		// Call the event
 		// This will probably trigger a dialog in the UI
 		this.ThisDisconnected(info);
 	}
 
-	public void DisconnectCleanUp()
+	public void PlayerDisconnectCleanUp()
 	{
 		// Change the gamestatus to reflect
 		this.gameManager.GameStatus = GameManager.GameState.notStarted;
@@ -603,6 +616,7 @@ public class NetworkManager : MonoBehaviour {
 		{
 			Debug.Log("Registered Server: " + mse);
 
+			// See; http://answers.unity3d.com/questions/660868/random-masterservereventregistrationsucceeded-on-p.html
 			// Only fire the event once
 			if(!this.ServerRegistered)
 				this.ThisRegisterServerAttempt(mse); // Fire Event

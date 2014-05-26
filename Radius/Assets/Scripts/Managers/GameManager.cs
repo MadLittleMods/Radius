@@ -68,10 +68,12 @@ public class GameManager : MonoBehaviour {
 		notStarted, started, pause
 	}
 
-
-	public PlayerManager playerManager;
-	public NetworkManager networkManager;
-	public ScoreManager scoreManager;
+	[SerializeField]
+	private PlayerManager playerManager;
+	[SerializeField]
+	private NetworkManager networkManager;
+	[SerializeField]
+	private ScoreManager scoreManager;
 
 	private GameState _gameStatus;
 	public GameState GameStatus

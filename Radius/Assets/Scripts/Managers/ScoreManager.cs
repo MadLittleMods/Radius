@@ -49,8 +49,10 @@ public class ScoreManager : MonoBehaviour {
 		}
 	}
 
-	public PlayerManager playerManager;
-	public GameManager gameManager;
+	[SerializeField]
+	private PlayerManager playerManager;
+	[SerializeField]
+	private GameManager gameManager;
 
 	// <scoreType, <guid, value>>
 	private Dictionary<string, Dictionary<string, float>> scoreList = new Dictionary<string, Dictionary<string, float>>();

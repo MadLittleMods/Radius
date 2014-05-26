@@ -18,7 +18,8 @@ public class OptionsUI : MonoBehaviour {
 	private CoherentUIView m_View;
 	private bool viewReady = false;
 
-	public AudioManager audioManager;
+	[SerializeField]
+	private AudioManager audioManager;
 
 	// Use this for initialization
 	void Start () {

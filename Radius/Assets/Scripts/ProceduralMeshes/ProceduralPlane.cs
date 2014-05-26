@@ -89,7 +89,7 @@ public class ProceduralPlane : MonoBehaviour {
 			}
 			else
 			{
-				meshUVs = MeshUtils.GenerateNonOverlappingUVArrayForTris(meshVertices.Length);
+				meshUVs = MeshUtils.GenerateNonOverlappingUVArrayForTris(meshVertices.Length, segmentsX, segmentsZ);
 			}
 			
 			// Set the UVs we generated into the mesh

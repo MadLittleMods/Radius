@@ -17,9 +17,12 @@ using System.Collections.Generic;
 public class ServerBrowserUI : MonoBehaviour {
 
 
-	public NetworkManager netMan;
-	public PlayerManager playerManager;
-	public GameManager gameManager;
+	[SerializeField]
+	private NetworkManager netMan;
+	[SerializeField]
+	private PlayerManager playerManager;
+	[SerializeField]
+	private GameManager gameManager;
 
 	
 	private CoherentUIView m_View;

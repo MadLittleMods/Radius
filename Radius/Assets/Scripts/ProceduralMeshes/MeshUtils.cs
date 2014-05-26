@@ -138,18 +138,49 @@ public class MeshUtils : MonoBehaviour {
 		return meshUVs;
 	}
 
-	public static Vector2[] GenerateNonOverlappingUVArrayForTris(int vertLength)
+	public static Vector2[] GenerateNonOverlappingUVArrayForTris(int vertLength, int numRectX, int numRectY)
 	{
 		// TODO: finish non-overlapping uvs
 
+		if(vertLength%6 != 0)
+			Debug.LogError("GenerateOverlappingUVArray(int vertLength): Please pass in a multiple of 6. Can only generate UVs for groups of rect tri faces.");
+		
 		Vector2[] meshUVs = new Vector2[vertLength];
-
+		
 		// In case we don't want to go to the edges
 		float xMax = 1f;
 		float yMax = 1f;
+
+		// (0, 1) _______ (1, 1)
+		//        |     |
+		//        |     |
+		//        |     | 
+		// (0, 0) ‾‾‾‾‾‾‾ (1, 0)
+
+		// Each ring plane is drawn over top of each other
+		// So that the material doesn't have to tile
+		for(int i = 0; i < meshUVs.Length; i+=6)
+		{
+			//float xOffset = (i%(6*numRectX);
+			//Debug.Log(xOffset);
+
+			// (0, 1) 1____2 (1, 1)
+			//         |  /
+			//         | /
+			// (0, 0) 3|/
+			meshUVs[i] = new Vector2(0, yMax);
+			meshUVs[i+1] = new Vector2(xMax, yMax);
+			meshUVs[i+2] = new Vector2(0, 0);
+			
+			//           /|2 (1, 1)
+			//          / |
+			//         /  |
+			// (0, 0) 1‾‾‾‾3 (1, 0)
+			meshUVs[i+3] = new Vector2(0, 0);
+			meshUVs[i+4] = new Vector2(xMax, yMax);
+			meshUVs[i+5] = new Vector2(xMax, 0);
+		}
 		
-
-
 		return meshUVs;
 	}
 	
@@ -229,7 +260,7 @@ public class MeshUtils : MonoBehaviour {
 			}
 			else
 			{
-				meshUVs = GenerateNonOverlappingUVArrayForTris(meshVertices.Length);
+				meshUVs = GenerateNonOverlappingUVArrayForTris(meshVertices.Length, spline.Length/6, heightSegments);
 			}
 
 			// Set the UVs we generated into the mesh

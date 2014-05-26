@@ -20,9 +20,12 @@ public class ServerLobbyUI : MonoBehaviour {
 	private CoherentUIView m_View;
 	private bool viewReady = false;
 
-	public GameManager gameManager;
-	public PlayerManager playerManager;
-	public NetworkManager networkManager;
+	[SerializeField]
+	private GameManager gameManager;
+	[SerializeField]
+	private PlayerManager playerManager;
+	[SerializeField]
+	private NetworkManager networkManager;
 
 	// Use this for initialization
 	void Start () {

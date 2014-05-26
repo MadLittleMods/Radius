@@ -68,8 +68,10 @@ public class LANManager : MonoBehaviour {
 	public float timeForAllRequestPackets = .8f;
 
 	
-	public NetworkManager networkManager;
-	public MainThreadTap mainThreadTap;
+	[SerializeField]
+	private NetworkManager networkManager;
+	[SerializeField]
+	private MainThreadTap mainThreadTap;
 
 
 	UdpClient udpRequestSender;
