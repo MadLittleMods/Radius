@@ -46,6 +46,9 @@ This project is meant to be functionally impressive example a complete game. It 
 
 # Changelog:
 
+`0.2.2`:
+ - Updated character driver to use an [accumulated fixed timestep](http://gafferongames.com/game-physics/fix-your-timestep/).
+
 `0.2.1`:
  - Updated NetworkManager disconnect logic
  -  Removed `Radius/Library/` because it can be regenerated when opening project.
