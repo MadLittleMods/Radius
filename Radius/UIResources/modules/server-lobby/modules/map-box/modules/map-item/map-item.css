@@ -1,0 +1,51 @@
+.map-item
+{
+	position: relative;
+	width: 24%;
+	min-height: 100px;
+
+	padding: 3px;
+	
+	background: rgba(0, 0, 0, .2);
+	border: 1px solid #000000;
+	
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+
+	-webkit-transition: all 0.3s ease-out;
+	-moz-transition: all 0.3s ease-out;
+	-o-transition: all 0.3s ease-out;
+	transition: all 0.3s ease-out;
+}
+
+.map-item.selected
+{
+	background: rgba(0, 0, 0, .4);
+}
+
+/* one item */
+.map-item:first-child:nth-last-child(1) {
+	width: 100%;
+}
+
+/* two items */
+.map-item:first-child:nth-last-child(2),
+.map-item:first-child:nth-last-child(2) ~ .map-item {
+	width: 49%;
+}
+
+/* three items */
+.map-item:first-child:nth-last-child(3),
+.map-item:first-child:nth-last-child(3) ~ .map-item {
+	width: 32.3333%;
+}
+
+
+.map-item-title
+{
+	position: absolute;
+	bottom: 0;
+
+	width: 100%;
+}

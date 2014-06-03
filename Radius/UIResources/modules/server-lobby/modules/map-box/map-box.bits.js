@@ -1,6 +1,6 @@
 "use strict";
 
-define(['require', 'jquery', 'jquery-utility', 'hbs!./map-item.partial', ], function(require, $, $utility, mapItemTmpl) {
+define(['require', 'jquery', 'jquery-utility'], function(require, $, $utility) {
 
 
 	function getLevels()
@@ -13,7 +13,10 @@ define(['require', 'jquery', 'jquery-utility', 'hbs!./map-item.partial', ], func
 			};
 
 			$('.map-content-box .map-holder').empty();
-			$('.map-content-box .map-holder').append(mapItemTmpl(levelContext));
+			renderer.append('./modules/map-item.module', levelContext, {}, $('.map-content-box .map-holder'), function(attachReturn) {
+				// ...
+			}, require);
+			//$('.map-content-box .map-holder').append(mapItemTmpl(levelContext));
 		});
 	}
 
