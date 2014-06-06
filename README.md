@@ -23,7 +23,7 @@ This project is meant to be functionally impressive example a complete game. It 
  - [Requires Unity Pro(because Coherent UI uses native code)](http://docs.unity3d.com/Documentation/Manual/Plugins.html) to work in the editor. You can build with Unity Free and add the dlls manually. See the [guide I made on using unmanaged Dlls with Unity to get a hint on how to get Coherent UI working](http://ericeastwood.com/blog/17/unity-and-dlls-c-managed-and-c-unmanaged)
  - Tested with:
 
-   ![Windows](http://i.imgur.com/Xc1hPQk.png) ![Mac](http://i.imgur.com/b51vsDe.png)
+   ![Windows](http://i.imgur.com/GAFNJEB.png) ![Mac](http://i.imgur.com/KwgyfmJ.png)
 
 
 # Getting Started (Setup)
