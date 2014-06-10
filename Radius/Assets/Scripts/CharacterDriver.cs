@@ -181,8 +181,8 @@ public class CharacterDriver : MonoBehaviour {
 		// Add the gravity
 		if(this.characterController.isGrounded)
 		{
-			// Remove ethe gravity in the direction we hit (ground)
-			currentState.velocity -= Vector3.Project(currentState.velocity, -1f * Physics.gravity.normalized);
+			// Remove the gravity in the direction we hit (ground)
+			currentState.velocity -= Vector3.Project(currentState.velocity, Physics.gravity.normalized);
 		}
 
 		currentState.velocity += Physics.gravity * deltaTime;
