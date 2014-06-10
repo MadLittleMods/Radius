@@ -1,8 +1,8 @@
-
 /*
  * Available functions:
  *	renderer.replace(...)
  *	renderer.append(...)
+ *	renderer.prepend(...)
  *	renderer.before(...)
  *	renderer.after(...)
  *
@@ -10,6 +10,21 @@
  *	renderer.replace('module-lobby', { isServer: true }, {}, $('.main-ui-layout-body.server-lobby'), function(attachReturn) {
  *		console.log('lobby template rendered');
  *	});
+
+
+module-lobby.js
+define(['require', 'hbs!./score-box/score-box', 'css!./score-box/score-box'], function(require, tmpl, css) {
+	return {
+		template: tmpl,
+		attach: function(options, elements) {
+			// You can do stuff here
+			// even return some methods
+			require(['./score-box/score.bits'], function(scoreBox) {
+				scoreBox.bind(elements);
+			});
+		}
+	};
+});
 */
 
 var renderer = (function() {
@@ -49,44 +64,6 @@ var renderer = (function() {
 	}
 })();
 
-
-
 define(function(){
 	return renderer;
 });
-
-
-
-
-
-/*
-// `require` is optional
-function render(module, context, attachOptions, parent, callback, localRequire) {
-	// Set restricTo default
-	require = typeof localRequire !== 'undefined' ? localRequire : require;
-
-	require([module], function(cpt) {
-		// Add the template html into the parent
-		var elements = parent.html(cpt.template(context)).children();
-		//console.log(elements);
-
-		// Call the callback
-		callback(cpt.attach(attachOptions, elements));
-	});
-}
-
-// `require` is optional
-function renderAppend(module, context, attachOptions, parent, callback, localRequire) {
-	// Set restricTo default
-	require = typeof localRequire !== 'undefined' ? localRequire : require;
-
-	require([module], function(cpt) {
-		// Add the template html into the parent
-		var elements = $(cpt.template(context)).appendTo(parent);
-		//console.log(elements);
-
-		// Call the callback
-		callback(cpt.attach(attachOptions, elements));
-	});
-}
-*/

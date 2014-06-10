@@ -181,10 +181,11 @@ public class CharacterDriver : MonoBehaviour {
 		// Add the gravity
 		if(this.characterController.isGrounded)
 		{
-			currentState.velocity = Physics.gravity * deltaTime;
+			// Remove ethe gravity in the direction we hit (ground)
+			currentState.velocity -= Vector3.Project(currentState.velocity, -1f * Physics.gravity.normalized);
 		}
-		else
-			currentState.velocity += Physics.gravity * deltaTime;
+
+		currentState.velocity += Physics.gravity * deltaTime;
 
 		
 		// Jumping
