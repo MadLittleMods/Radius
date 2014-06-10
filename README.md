@@ -51,7 +51,6 @@ This project is meant to be functionally impressive example a complete game. It 
 
 
 `0.3`:
- - Added official support for Linux
  - Updated Conic Camera Controller to stay conic always.
  - Updated character driver gravity logic.
 
