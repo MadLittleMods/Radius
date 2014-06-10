@@ -49,6 +49,12 @@ This project is meant to be functionally impressive example a complete game. It 
 
 # Changelog:
 
+
+`0.3`:
+ - Added official support for Linux
+ - Updated Conic Camera Controller to stay conic always.
+ - Updated character driver gravity logic.
+
 `0.2.2`:
  - Updated character driver to use an [accumulated fixed timestep](http://gafferongames.com/game-physics/fix-your-timestep/).
 
