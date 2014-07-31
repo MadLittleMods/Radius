@@ -45,7 +45,7 @@ This project is meant to be functionally impressive example a complete game. It 
  - Character Controller/Driver: `CharacterDriver.cs`
  - Camera Controller (Conic): `ConicCameraController.cs`
  - Master Volume for Music and Soundeffects: `AudioManager.cs`, `AudioBase.cs`
- - Many more undocumented...
+ - Many more commented but undocumented here...
 
 
 # Other Projects using Radius
