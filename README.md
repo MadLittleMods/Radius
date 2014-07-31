@@ -18,6 +18,13 @@ This project is meant to be functionally impressive example a complete game. It 
  - Sound Effects and Music + Volume
 
 
+# Other Projects using Radius:
+ - **[Super Bounce](https://github.com/MadLittleMods/Super-Bounce):** A super bouncing sandbox. Inspired by the super bouncing physics bug from Halo 2.
+ - **[Dishes, Please](https://github.com/Costava/Dishes-Please):** "A dish washing simulator."
+
+
+
+
 # Details:
  - Developed in Unity 4.3.1f1 and Coherent UI 1.8.1
  - [Requires Unity Pro(because Coherent UI uses native code)](http://docs.unity3d.com/Documentation/Manual/Plugins.html) to work in the editor. You can build with Unity Free and add the dlls manually. See the [guide I made on using unmanaged Dlls with Unity to get a hint on how to get Coherent UI working](http://ericeastwood.com/blog/17/unity-and-dlls-c-managed-and-c-unmanaged)
@@ -46,11 +53,6 @@ This project is meant to be functionally impressive example a complete game. It 
  - Camera Controller (Conic): `ConicCameraController.cs`
  - Master Volume for Music and Soundeffects: `AudioManager.cs`, `AudioBase.cs`
  - Many more commented but undocumented here...
-
-
-# Other Projects using Radius
- - **[Super Bounce](https://github.com/MadLittleMods/Super-Bounce):** A super bouncing sandbox. Inspired by the super bouncing physics bug from Halo 2.
- - **[Dishes, Please](https://github.com/Costava/Dishes-Please):** "A dish washing simulator."
 
 
 
