@@ -49,8 +49,8 @@ This project is meant to be functionally impressive example a complete game. It 
 
 
 # Other Projects using Radius
- - **[Super Bounce](https://github.com/MadLittleMods/Super-Bounce): ** A super bouncing sandbox. Inspired by the super bouncing physics bug from Halo 2.
- - **[Dishes, Please](https://github.com/Costava/Dishes-Please): ** "A dish washing simulator."
+ - **[Super Bounce](https://github.com/MadLittleMods/Super-Bounce):** A super bouncing sandbox. Inspired by the super bouncing physics bug from Halo 2.
+ - **[Dishes, Please](https://github.com/Costava/Dishes-Please):** "A dish washing simulator."
 
 
 
