@@ -45,10 +45,16 @@ This project is meant to be functionally impressive example a complete game. It 
  - Character Controller/Driver: `CharacterDriver.cs`
  - Camera Controller (Conic): `ConicCameraController.cs`
  - Master Volume for Music and Soundeffects: `AudioManager.cs`, `AudioBase.cs`
- 
+ - Many more undocumented...
+
+
+# Other Projects using Radius
+ - **[Super Bounce](https://github.com/MadLittleMods/Super-Bounce): ** A super bouncing sandbox. Inspired by the super bouncing physics bug from Halo 2.
+ - **[Dishes, Please](https://github.com/Costava/Dishes-Please): ** "A dish washing simulator."
+
+
 
 # Changelog:
-
 
 `0.3`:
  - Updated Conic Camera Controller to stay conic always.
