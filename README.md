@@ -26,7 +26,7 @@ This project is meant to be functionally impressive example a complete game. It 
 
 
 # Details:
- - Developed in Unity 4.3.1f1 and Coherent UI 1.8.1
+ - Developed in Unity 4.5.0f6 and Coherent UI 1.8.1
  - [Requires Unity Pro(because Coherent UI uses native code)](http://docs.unity3d.com/Documentation/Manual/Plugins.html) to work in the editor. You can build with Unity Free and add the dlls manually. See the [guide I made on using unmanaged Dlls with Unity to get a hint on how to get Coherent UI working](http://ericeastwood.com/blog/17/unity-and-dlls-c-managed-and-c-unmanaged)
  - Tested with:
 
@@ -57,6 +57,11 @@ This project is meant to be functionally impressive example a complete game. It 
 
 
 # Changelog:
+
+`0.4`:
+ - Added Time Limit option
+ - Updated spawn code to actually spawn correctly after the initial game
+ - Cleaned up the event code
 
 `0.3`:
  - Updated Conic Camera Controller to stay conic always.
