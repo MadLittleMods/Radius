@@ -35,40 +35,21 @@ public class TerritoryController : MonoBehaviour {
 	}
 
 	public delegate void TerritoryCapturedEventHandler(MonoBehaviour sender, TerritoryActivityEventArgs e);
-	public event TerritoryCapturedEventHandler OnTerritoryCaptured;
+	public event TerritoryCapturedEventHandler OnTerritoryCaptured = delegate { };
 
 	public delegate void TerritoryLostEventHandler(MonoBehaviour sender, TerritoryActivityEventArgs e);
-	public event TerritoryLostEventHandler OnTerritoryLost;
+	public event TerritoryLostEventHandler OnTerritoryLost = delegate { };
 
 	public delegate void TerritoryUpdatedEventHandler(MonoBehaviour sender, TerritoryData tData);
-	public event TerritoryUpdatedEventHandler OnTerritoryUpdated;
+	public event TerritoryUpdatedEventHandler OnTerritoryUpdated = delegate { };
 
 	public delegate void TerritoryEnteredEventHandler(MonoBehaviour sender, TerritoryActivityEventArgs e);
-	public event TerritoryEnteredEventHandler OnTerritoryEntered;
+	public event TerritoryEnteredEventHandler OnTerritoryEntered = delegate { };
 
 	public delegate void TerritoryExitedEventHandler(MonoBehaviour sender, TerritoryActivityEventArgs e);
-	public event TerritoryExitedEventHandler OnTerritoryExited;
+	public event TerritoryExitedEventHandler OnTerritoryExited = delegate { };
 
 
-	// Use this to trigger the event
-	protected virtual void ThisTerritoryCaptured(MonoBehaviour sender, TerritoryActivityEventArgs e)
-	{
-		TerritoryCapturedEventHandler handler = OnTerritoryCaptured;
-		if(handler != null)
-		{
-			handler(sender, e);
-		}
-	}
-
-	// Use this to trigger the event
-	protected virtual void ThisTerritoryLost(MonoBehaviour sender, TerritoryActivityEventArgs e)
-	{
-		TerritoryLostEventHandler handler = OnTerritoryLost;
-		if(handler != null)
-		{
-			handler(sender, e);
-		}
-	}
 
 	// Use this to trigger the event
 	private float lastUpdateEventTime = 0f;
@@ -91,24 +72,8 @@ public class TerritoryController : MonoBehaviour {
 		}
 	}
 
-	// Use this to trigger the event
-	protected virtual void ThisTerritoryEntered(MonoBehaviour sender, TerritoryActivityEventArgs e)
-	{
-		TerritoryEnteredEventHandler handler = OnTerritoryEntered;
-		if(handler != null)
-		{
-			handler(sender, e);
-		}
-	}
-	// Use this to trigger the event
-	protected virtual void ThisTerritoryExited(MonoBehaviour sender, TerritoryActivityEventArgs e)
-	{
-		TerritoryExitedEventHandler handler = OnTerritoryExited;
-		if(handler != null)
-		{
-			handler(sender, e);
-		}
-	}
+
+
 
 
 	public ExposedTrigger territoryTrigger; // The territory
@@ -190,7 +155,7 @@ public class TerritoryController : MonoBehaviour {
 					tDataLocked.Color = new ColorData(this.LockedCaptureState.ThisTeamToColor()).ToDictionary();
 					tDataLocked.LockedColor = new ColorData(this.LockedCaptureState.ThisTeamToColor()).ToDictionary();
 					tDataLocked.TempColor = new ColorData(this.LockedCaptureState.ThisTeamToColor()).ToDictionary();
-					this.ThisTerritoryCaptured(this, new TerritoryActivityEventArgs(this.LockedCaptureState, tDataLocked));
+					this.OnTerritoryCaptured(this, new TerritoryActivityEventArgs(this.LockedCaptureState, tDataLocked));
 					
 				}
 			}
@@ -210,13 +175,13 @@ public class TerritoryController : MonoBehaviour {
 						if(this.LockedCaptureState != this.playerCapturing)
 						{
 							// Fire the event
-							Debug.Log("ThisTerritoryLost");
+							Debug.Log("OnTerritoryLost");
 							TerritoryData tDataUnlocked = new TerritoryData();
 							tDataUnlocked.Progress = this.CaptureProgress;
 							tDataUnlocked.Color = new ColorData(Player.TeamToColor(Player.Team.None)).ToDictionary();
 							tDataUnlocked.LockedColor = new ColorData(Player.TeamToColor(Player.Team.None)).ToDictionary();
 							tDataUnlocked.TempColor = new ColorData(this.playerCapturing.ThisTeamToColor()).ToDictionary();
-							this.ThisTerritoryLost(this, new TerritoryActivityEventArgs(this.LockedCaptureState, tDataUnlocked));
+							this.OnTerritoryLost(this, new TerritoryActivityEventArgs(this.LockedCaptureState, tDataUnlocked));
 						}
 					}
 					
@@ -357,7 +322,7 @@ public class TerritoryController : MonoBehaviour {
 		tData.Color = new ColorData(this.LockedCaptureState ? this.LockedCaptureState.ThisTeamToColor() : Player.TeamToColor(Player.Team.None)).ToDictionary();
 		tData.LockedColor = new ColorData(this.LockedCaptureState ? this.LockedCaptureState.ThisTeamToColor() : Player.TeamToColor(Player.Team.None)).ToDictionary();
 		tData.TempColor = new ColorData(this.tempCaptureState ? this.tempCaptureState.ThisTeamToColor() : Player.TeamToColor(Player.Team.None)).ToDictionary();
-		this.ThisTerritoryEntered(this, new TerritoryActivityEventArgs(player, tData));
+		this.OnTerritoryEntered(this, new TerritoryActivityEventArgs(player, tData));
 	}
 
 	void TerritoryExit(ExposedTrigger sender, ExposedTrigger.TriggerActivityEventArgs e)
@@ -380,7 +345,7 @@ public class TerritoryController : MonoBehaviour {
 		tData.Color = new ColorData(this.LockedCaptureState ? this.LockedCaptureState.ThisTeamToColor() : Player.TeamToColor(Player.Team.None)).ToDictionary();
 		tData.LockedColor = new ColorData(this.LockedCaptureState ? this.LockedCaptureState.ThisTeamToColor() : Player.TeamToColor(Player.Team.None)).ToDictionary();
 		tData.TempColor = new ColorData(this.tempCaptureState ? this.tempCaptureState.ThisTeamToColor() : Player.TeamToColor(Player.Team.None)).ToDictionary();
-		this.ThisTerritoryExited(this, new TerritoryActivityEventArgs(player, tData));
+		this.OnTerritoryExited(this, new TerritoryActivityEventArgs(player, tData));
 	}
 
 }

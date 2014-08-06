@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Radius: Complete Unity Reference Project
  * 
  * Source: https://github.com/MadLittleMods/Radius

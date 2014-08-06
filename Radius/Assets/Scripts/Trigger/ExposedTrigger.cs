@@ -26,10 +26,11 @@ public class ExposedTrigger : MonoBehaviour {
 	}
 
 	public delegate void ThisTriggerEnterEventHandler(ExposedTrigger sender, TriggerActivityEventArgs e);
-	public event ThisTriggerEnterEventHandler OnThisTriggerEnter;
+	public event ThisTriggerEnterEventHandler OnThisTriggerEnter = delegate { };
 
 	public delegate void ThisTriggerExitEventHandler(ExposedTrigger sender, TriggerActivityEventArgs e);
-	public event ThisTriggerExitEventHandler OnThisTriggerExit;
+	public event ThisTriggerExitEventHandler OnThisTriggerExit = delegate { };
+
 
 	// Use this to trigger the event
 	protected virtual void ThisTriggerEnter(ExposedTrigger sender, TriggerActivityEventArgs e)
@@ -40,7 +41,7 @@ public class ExposedTrigger : MonoBehaviour {
 			handler(sender, e);
 		}
 	}
-
+	
 	// Use this to trigger the event
 	protected virtual void ThisTriggerExit(ExposedTrigger sender, TriggerActivityEventArgs e)
 	{
