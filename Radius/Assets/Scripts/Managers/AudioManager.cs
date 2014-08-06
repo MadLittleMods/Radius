@@ -27,17 +27,7 @@ public class AudioManager : MonoBehaviour {
 	}
 
 	public delegate void VolumeChangedEventHandler(MonoBehaviour sender, VolumeChangeEventArgs e);
-	public event VolumeChangedEventHandler OnVolumeChange;
-
-	// Use this to trigger the event
-	protected virtual void ThisVolumeChanged(MonoBehaviour sender, VolumeChangeEventArgs e)
-	{
-		VolumeChangedEventHandler handler = OnVolumeChange;
-		if(handler != null)
-		{
-			handler(sender, e);
-		}
-	}
+	public event VolumeChangedEventHandler OnVolumeChange = delegate { };
 
 	// Store all of the different volumes
 	private Dictionary<AudioBase.AudioType, float> masterVolume = new Dictionary<AudioBase.AudioType, float>();
@@ -72,7 +62,7 @@ public class AudioManager : MonoBehaviour {
 		PlayerPrefs.SetFloat("MasterVolume_" + type, this.masterVolume[type]);
 
 		// Fire the event
-		this.ThisVolumeChanged(this, new VolumeChangeEventArgs(type, volume));
+		this.OnVolumeChange(this, new VolumeChangeEventArgs(type, volume));
 	}
 
 

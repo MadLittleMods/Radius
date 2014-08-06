@@ -25,43 +25,13 @@ public class GameManager : MonoBehaviour {
 	}
 
 	public delegate void LevelChangedEventHandler(MonoBehaviour sender, GameActivityEventArgs e);
-	public LevelChangedEventHandler OnLevelChanged;
-
+	public LevelChangedEventHandler OnLevelChanged = delegate { };
+	
 	public delegate void GameStartedEventHandler(MonoBehaviour sender);
-	public GameStartedEventHandler OnGameStarted;
-
+	public GameStartedEventHandler OnGameStarted = delegate { };
+	
 	public delegate void GameEndedEventHandler(MonoBehaviour sender);
-	public GameEndedEventHandler OnGameEnded;
-
-	// Use this to trigger the event
-	protected virtual void ThisLevelChanged(MonoBehaviour sender, GameActivityEventArgs e)
-	{
-		LevelChangedEventHandler handler = OnLevelChanged;
-		if(handler != null)
-		{
-			handler(sender, e);
-		}
-	}
-
-	// Use this to trigger the event
-	protected virtual void ThisGameStarted(MonoBehaviour sender)
-	{
-		GameStartedEventHandler handler = OnGameStarted;
-		if(handler != null)
-		{
-			handler(sender);
-		}
-	}
-
-	// Use this to trigger the event
-	protected virtual void ThisGameEnded(MonoBehaviour sender)
-	{
-		GameEndedEventHandler handler = OnGameEnded;
-		if(handler != null)
-		{
-			handler(sender);
-		}
-	}
+	public GameEndedEventHandler OnGameEnded = delegate { };
 
 	
 	public enum GameState {
@@ -84,11 +54,11 @@ public class GameManager : MonoBehaviour {
 		set {
 			// If we are changing from not started to started
 			if(this._gameStatus == GameState.notStarted && value == GameState.started)
-				this.ThisGameStarted(this); // fire the event
+				this.OnGameStarted(this); // fire the event
 
 			// If we are changing from started to not started
 			if(this._gameStatus == GameState.started && value == GameState.notStarted)
-				this.ThisGameEnded(this); // fire the event
+				this.OnGameEnded(this); // fire the event
 
 			this._gameStatus = value;
 
@@ -178,7 +148,7 @@ public class GameManager : MonoBehaviour {
 
 			// Check if the time limit was reached
 			// Make sure the time limit is above 0. < 0 equals infinite time
-			if(this.GameTimeLimit > 0 &&this.CurrentGameTime >= this.GameTimeLimit)
+			if(this.GameTimeLimit > 0 && this.CurrentGameTime >= this.GameTimeLimit)
 				this.EndGame();
 		}
 	}
@@ -235,7 +205,7 @@ public class GameManager : MonoBehaviour {
 
 		// Fire the event
 		Debug.Log("Firing the level changed event");
-		this.ThisLevelChanged(this, new GameActivityEventArgs(level));
+		this.OnLevelChanged(this, new GameActivityEventArgs(level));
 	}
 
 

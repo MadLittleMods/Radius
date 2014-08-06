@@ -27,43 +27,14 @@ public class PlayerManager : MonoBehaviour {
 	}
 	
 	public delegate void PlayerJoinedEventHandler(MonoBehaviour sender, PlayerActivityEventArgs e);
-	public event PlayerJoinedEventHandler OnPlayerJoined;
-
+	public event PlayerJoinedEventHandler OnPlayerJoined = delegate { };
+	
 	public delegate void PlayerLeftEventHandler(MonoBehaviour sender, PlayerActivityEventArgs e);
-	public event PlayerLeftEventHandler OnPlayerLeft;
-
+	public event PlayerLeftEventHandler OnPlayerLeft = delegate { };
+	
 	public delegate void PlayerUpdatedEventHandler(MonoBehaviour sender, PlayerActivityEventArgs e);
-	public event PlayerUpdatedEventHandler OnPlayerUpdated;
+	public event PlayerUpdatedEventHandler OnPlayerUpdated = delegate { };
 
-	// Use this to trigger the event
-	protected virtual void ThisPlayerJoined(MonoBehaviour sender, PlayerActivityEventArgs e)
-	{
-		PlayerJoinedEventHandler handler = OnPlayerJoined;
-		if(handler != null)
-		{
-			handler(sender, e);
-		}
-	}
-
-	// Use this to trigger the event
-	protected virtual void ThisPlayerLeft(MonoBehaviour sender, PlayerActivityEventArgs e)
-	{
-		PlayerLeftEventHandler handler = OnPlayerLeft;
-		if(handler != null)
-		{
-			handler(sender, e);
-		}
-	}
-
-	// Use this to trigger the event
-	protected virtual void ThisPlayerUpdated(MonoBehaviour sender, PlayerActivityEventArgs e)
-	{
-		PlayerUpdatedEventHandler handler = OnPlayerUpdated;
-		if(handler != null)
-		{
-			handler(sender, e);
-		}
-	}
 
 
 	public GameObject playerPrefab;
@@ -109,11 +80,11 @@ public class PlayerManager : MonoBehaviour {
 		// Bind the player updated event to the player manager player update event
 		// Yes we know a bit of a duplication but separation of power...
 		player.OnPlayerUpdated += (updatedPlayer) => { 
-			this.ThisPlayerUpdated(this, new PlayerActivityEventArgs(updatedPlayer.GetPlayerData())); 
+			this.OnPlayerUpdated(this, new PlayerActivityEventArgs(updatedPlayer.GetPlayerData())); 
 		};
 
 		// Fire the join player event
-		this.ThisPlayerJoined(this, new PlayerActivityEventArgs(player.GetPlayerData()));
+		this.OnPlayerJoined(this, new PlayerActivityEventArgs(player.GetPlayerData()));
 	}
 	public void AddPlayerSilent(string guid, Player player)
 	{
@@ -135,7 +106,7 @@ public class PlayerManager : MonoBehaviour {
 			Destroy(player.gameObject);
 			this.playerList.Remove(guid);
 
-			this.ThisPlayerLeft(this, new PlayerActivityEventArgs(player.GetPlayerData()));
+			this.OnPlayerLeft(this, new PlayerActivityEventArgs(player.GetPlayerData()));
 		}
 		else
 			Debug.LogWarning("Trying to remove player that is not in the list");
@@ -178,8 +149,15 @@ public class PlayerManager : MonoBehaviour {
 	{
 		Debug.Log("Spawning Player: " + position);
 
-		this.GetPlayer(guid).transform.position = position;
-		this.GetPlayer(guid).transform.rotation = rotation;
+		var player = this.GetPlayer(guid);
+		if(player != null)
+		{
+			player.TeleportPlayer(position, rotation);
+			//player.transform.position = position;
+			//player.transform.rotation = rotation;
+		}
+		else
+			Debug.LogWarning("Unable to spawn Player " + guid + " because it was null");
 	}
 
 	public void SpawnPlayer(string guid, Transform spawnTransform)

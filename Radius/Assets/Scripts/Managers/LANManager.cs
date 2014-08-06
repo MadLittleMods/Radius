@@ -27,37 +27,6 @@ public class LANManager : MonoBehaviour {
 	event ServerDataReceivedEventHandler OnServerDataReceived;
 
 
-	// Use this to trigger the event
-	protected virtual void ThisServerListUpdated(ServerData[] serverList)
-	{
-		ServerListUpdatedEventHandler handler = OnServerListUpdated;
-		if(handler != null)
-		{
-			handler(serverList);
-		}
-	}
-
-	// Use this to trigger the event
-	protected virtual void ThisRequestReceived(string message)
-	{
-		RequestReceivedEventHandler handler = OnRequestReceived;
-		if(handler != null)
-		{
-			handler(message);
-		}
-	}
-
-
-	
-	// Use this to trigger the event
-	protected virtual void ThisServerDataReceived(string message)
-	{
-		ServerDataReceivedEventHandler handler = OnServerDataReceived;
-		if(handler != null)
-		{
-			handler(message);
-		}
-	}
 
 
 	public int requestPort = 55795;
@@ -268,7 +237,7 @@ public class LANManager : MonoBehaviour {
 		{
 			this.mainThreadTap.QueueOnMainThread(() => {
 				// Fire the event
-				this.ThisRequestReceived(receivedString);
+				this.OnRequestReceived(receivedString);
 
 				this.SendServerData();
 			});
@@ -323,7 +292,7 @@ public class LANManager : MonoBehaviour {
 
 		this.mainThreadTap.QueueOnMainThread(() => {
 			// Fire the event
-			this.ThisServerDataReceived(receivedString);
+			this.OnServerDataReceived(receivedString);
 
 			this.ParseServerData(receivedString);
 
@@ -351,7 +320,7 @@ public class LANManager : MonoBehaviour {
 
 		// If the entry was updated, fire the event
 		if(entryUpdated)
-			this.ThisServerListUpdated(new List<ServerData>(this.ServerList.Values).ToArray());
+			this.OnServerListUpdated(new List<ServerData>(this.ServerList.Values).ToArray());
 	}
 
 

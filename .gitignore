@@ -18,6 +18,7 @@ Radius/UIResources/fonts/mission_gothic/
 
 # Ignore Coherent UI (against licensing): Go get a free evalutation version: http://coherent-labs.com/
 # --------------------------------------------------
+Radius/Coherent_UI.log
 Radius/Assets/CoherentUI
 Radius/Assets/CoherentUI.meta
 Radius/Assets/Standard Assets/Scripts/CoherentUI

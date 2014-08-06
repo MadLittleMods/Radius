@@ -37,17 +37,9 @@ public class ScoreManager : MonoBehaviour {
 	}
 
 	public delegate void ScoreUpdatedEventHandler(MonoBehaviour sender, ScoreActivityEventArgs e);
-	public event ScoreUpdatedEventHandler OnScoreUpdated;
+	public event ScoreUpdatedEventHandler OnScoreUpdated = delegate { };
 
-	// Use this to trigger the event
-	protected virtual void ThisScoreUpdated(MonoBehaviour sender, ScoreActivityEventArgs e)
-	{
-		ScoreUpdatedEventHandler handler = OnScoreUpdated;
-		if(handler != null)
-		{
-			handler(sender, e);
-		}
-	}
+
 
 	[SerializeField]
 	private PlayerManager playerManager;
@@ -86,7 +78,8 @@ public class ScoreManager : MonoBehaviour {
 		*/
 	}
 
-	public float UpdateScore(string scoreType, string playerGuid, float value, ScoreSetType setType = ScoreSetType.delta) {
+	public float UpdateScore(string scoreType, string playerGuid, float value, ScoreSetType setType = ScoreSetType.delta) 
+	{
 		// Returns the new assigned value
 
 		// Create the dictionary key if it doesn't exist
@@ -114,7 +107,7 @@ public class ScoreManager : MonoBehaviour {
 		scoreData.scoreType = scoreType;
 		scoreData.guid = playerGuid;
 		scoreData.value = newValue;
-		this.ThisScoreUpdated(this, new ScoreActivityEventArgs(scoreData));
+		this.OnScoreUpdated(this, new ScoreActivityEventArgs(scoreData));
 
 		// Tell the others the score
 		if(Network.isServer)

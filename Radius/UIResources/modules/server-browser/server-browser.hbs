@@ -20,6 +20,8 @@
 			<div class="server-list-body">
 				{{#each servers}}
 					{{> ./server-list-row.partial }}
+				{{else}}
+					<div class="server-row"><div class="server-row-item">No servers available...</div></div>
 				{{/each}}
 			</div>
 		</div>

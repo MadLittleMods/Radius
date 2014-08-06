@@ -83,56 +83,17 @@ public class NetworkManager : MonoBehaviour {
 	}
 
 	public delegate void ServerListUpdatedEventHandler(ServerData[] serverList);
-	public event ServerListUpdatedEventHandler OnServerListUpdated;
-
-	public delegate void RegisterServerAttemptEventHandler(ServerCreationEvent sce);
-	public event RegisterServerAttemptEventHandler OnServerRegisterAttempt;
-
-	public delegate void AsyncConnectInfoEventHandler(NetworkConnectionErrorResponse response);
-	public event AsyncConnectInfoEventHandler OnAsyncConnectInfoEvent;
-
-	public delegate void DisconnectedFromServerEventHandler(NetworkDisconnection info);
-	public event DisconnectedFromServerEventHandler OnDisconnected;
-
-	// Use this to trigger the event
-	protected virtual void ThisServerListUpdated(ServerData[] serverList)
-	{
-		ServerListUpdatedEventHandler handler = OnServerListUpdated;
-		if(handler != null)
-		{
-			handler(serverList);
-		}
-	}
+	public event ServerListUpdatedEventHandler OnServerListUpdated = delegate { };
 	
-	// Use this to trigger the event
-	protected virtual void ThisRegisterServerAttempt(ServerCreationEvent sce)
-	{
-		RegisterServerAttemptEventHandler handler = OnServerRegisterAttempt;
-		if(handler != null)
-		{
-			handler(sce);
-		}
-	}
+	public delegate void RegisterServerAttemptEventHandler(ServerCreationEvent sce);
+	public event RegisterServerAttemptEventHandler OnServerRegisterAttempt = delegate { };
+	
+	public delegate void AsyncConnectInfoEventHandler(NetworkConnectionErrorResponse response);
+	public event AsyncConnectInfoEventHandler OnAsyncConnectInfoEvent = delegate { };
+	
+	public delegate void DisconnectedFromServerEventHandler(NetworkDisconnection info);
+	public event DisconnectedFromServerEventHandler OnDisconnected = delegate { };
 
-	// Use this to trigger the event
-	protected virtual void ThisAsyncConnectInfo(NetworkConnectionErrorResponse response)
-	{
-		AsyncConnectInfoEventHandler handler = OnAsyncConnectInfoEvent;
-		if(handler != null)
-		{
-			handler(response);
-		}
-	}
-
-	// Use this to trigger the event
-	protected virtual void ThisDisconnected(NetworkDisconnection info)
-	{
-		DisconnectedFromServerEventHandler handler = OnDisconnected;
-		if(handler != null)
-		{
-			handler(info);
-		}
-	}
 
 	[SerializeField]
 	private PlayerManager playerManager;
@@ -260,7 +221,7 @@ public class NetworkManager : MonoBehaviour {
 
 		this.lanManager.OnServerListUpdated += (serverList) => {
 			// Fire the overrall network server list updated
-			this.ThisServerListUpdated(this.CombinedServerListArray);
+			this.OnServerListUpdated(this.CombinedServerListArray);
 		};
 	}
 	
@@ -306,7 +267,7 @@ public class NetworkManager : MonoBehaviour {
 			}, () => {
 				// TODO: Tell our host config dialog that you can't do that
 				Debug.Log("Can't Register the server online: No access to the internet");
-				this.ThisRegisterServerAttempt(ServerCreationEventCode.MSRegistrationFailedNoInternet);
+				this.OnServerRegisterAttempt(ServerCreationEventCode.MSRegistrationFailedNoInternet);
 			});
 		
 		}
@@ -387,7 +348,7 @@ public class NetworkManager : MonoBehaviour {
 					// You probably won't get here because you check for internet higher in the stack
 					// TODO: Tell our host config dialog that you can't do that
 					Debug.Log("Can't Register the server online: No access to the internet");
-					this.ThisRegisterServerAttempt(ServerCreationEventCode.MSRegistrationFailedNoInternet);
+					this.OnServerRegisterAttempt(ServerCreationEventCode.MSRegistrationFailedNoInternet);
 				}
 			}
 			else
@@ -396,7 +357,7 @@ public class NetworkManager : MonoBehaviour {
 				this.lanManager.StartListening();
 				
 				// We have essentially registered the server locally
-				this.ThisRegisterServerAttempt(ServerCreationEventCode.RegistrationSucceeded); // Fire Event
+				this.OnServerRegisterAttempt(ServerCreationEventCode.RegistrationSucceeded); // Fire Event
 			}
 		}
 	}
@@ -417,7 +378,7 @@ public class NetworkManager : MonoBehaviour {
 		this.serverList.Clear();
 		this.lanManager.ClearServerList();
 		// We cleared the lists so fire the event
-		this.ThisServerListUpdated(this.CombinedServerListArray); // Fire Event
+		this.OnServerListUpdated(this.CombinedServerListArray); // Fire Event
 
 		// Start finding servers that are LAN
 		this.lanManager.StartDiscovery();
@@ -541,7 +502,7 @@ public class NetworkManager : MonoBehaviour {
 		NetworkConnectionErrorResponse response = new NetworkConnectionErrorResponse();
 		response.noErrorsYet = true;
 		response.ableToConnectYet = true;
-		this.ThisAsyncConnectInfo(response);
+		this.OnAsyncConnectInfoEvent(response);
 
 		// Put the player in the game if the game is already going
 		if(this.gameManager.GameStatus == GameManager.GameState.started)
@@ -587,7 +548,7 @@ public class NetworkManager : MonoBehaviour {
 
 		// Call the event
 		// This will probably trigger a dialog in the UI
-		this.ThisDisconnected(info);
+		this.OnDisconnected(info);
 	}
 
 	public void PlayerDisconnectCleanUp()
@@ -606,7 +567,7 @@ public class NetworkManager : MonoBehaviour {
 		// We are not connected anymore
 		this.IsConnected = false;
 
-		this.ThisAsyncConnectInfo(this.GetResponseFromNetworkConnectionError(connectError));
+		this.OnAsyncConnectInfoEvent(this.GetResponseFromNetworkConnectionError(connectError));
 	}
 
 	void OnMasterServerEvent(MasterServerEvent mse)
@@ -619,7 +580,7 @@ public class NetworkManager : MonoBehaviour {
 			// See; http://answers.unity3d.com/questions/660868/random-masterservereventregistrationsucceeded-on-p.html
 			// Only fire the event once
 			if(!this.ServerRegistered)
-				this.ThisRegisterServerAttempt(mse); // Fire Event
+				this.OnServerRegisterAttempt(mse); // Fire Event
 
 			this.ServerRegistered = true;
 		}
@@ -643,7 +604,7 @@ public class NetworkManager : MonoBehaviour {
 			//var asdf = new List<ServerData>(this.serverDataList.Values).ToArray();
 
 			// Fire Event
-			this.ThisServerListUpdated(this.CombinedServerListArray);
+			this.OnServerListUpdated(this.CombinedServerListArray);
 		}
 	}
 

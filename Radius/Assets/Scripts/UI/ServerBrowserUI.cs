@@ -177,6 +177,15 @@ public class ServerBrowserUI : MonoBehaviour {
 				(string)serverObj["server_map"], 
 				(string)serverObj["server_gametype"]
 			);
+
+			// Set the game time limit
+			if(this.gameManager != null)
+			{
+				float timeLimit = -1; // Infinite
+				float.TryParse((string)serverObj.GetValueOrDefault("time_limit", new Value("-1")), out timeLimit);
+				this.gameManager.GameTimeLimit = timeLimit;
+			}
+
 		} catch(InvalidValueCastException e) {
 			Debug.LogWarning("Cast exception while trying to start a server: " + e);
 		}

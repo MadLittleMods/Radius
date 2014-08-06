@@ -85,6 +85,7 @@ require(['jquery', 'coherent', 'renderer'], function($, coherent, renderer) {
 		/* */
 		var serverListContext = {
 			servers: [
+				/* * /
 				{
 					guid: 'sa1234ffds',
 					gameName: "(fake) My Server",
@@ -125,6 +126,8 @@ require(['jquery', 'coherent', 'renderer'], function($, coherent, renderer) {
 					map: "Midship",
 					gameType: "Territories"
 				}
+				/* */
+
 				/* * /
 				,
 				{ guid: 'sa1234ffds', gameName: "(fake) Another Server", description: "24/7 gameplay galore", pwProtected: true, connectedPlayers: 4, playerLimit: 8, map: "Blood Gulch", gameType: "Territories" },

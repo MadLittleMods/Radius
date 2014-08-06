@@ -15,42 +15,15 @@ public class TerritoryManager : MonoBehaviour {
 
 
 	public delegate void ATerritoryEnteredEventHandler(MonoBehaviour sender, TerritoryController.TerritoryActivityEventArgs e);
-	public event ATerritoryEnteredEventHandler OnATerritoryEntered;
+	public event ATerritoryEnteredEventHandler OnATerritoryEntered = delegate { };
 	
 	public delegate void ATerritoryExitedEventHandler(MonoBehaviour sender, TerritoryController.TerritoryActivityEventArgs e);
-	public event ATerritoryExitedEventHandler OnATerritoryExited;
+	public event ATerritoryExitedEventHandler OnATerritoryExited = delegate { };
 
 	public delegate void ATerritoryUpdatedEventHandler(MonoBehaviour sender, TerritoryController.TerritoryData tData);
-	public event ATerritoryUpdatedEventHandler OnATerritoryUpdated;
+	public event ATerritoryUpdatedEventHandler OnATerritoryUpdated = delegate { };
 
-	// Use this to trigger the event
-	protected virtual void ThisATerritoryEntered(MonoBehaviour sender, TerritoryController.TerritoryActivityEventArgs e)
-	{
-		ATerritoryEnteredEventHandler handler = OnATerritoryEntered;
-		if(handler != null)
-		{
-			handler(sender, e);
-		}
-	}
-	// Use this to trigger the event
-	protected virtual void ThisATerritoryExited(MonoBehaviour sender, TerritoryController.TerritoryActivityEventArgs e)
-	{
-		ATerritoryExitedEventHandler handler = OnATerritoryExited;
-		if(handler != null)
-		{
-			handler(sender, e);
-		}
-	}
 
-	// Use this to trigger the event
-	protected virtual void ThisATerritoryUpdated(MonoBehaviour sender, TerritoryController.TerritoryData tData)
-	{
-		ATerritoryUpdatedEventHandler handler = OnATerritoryUpdated;
-		if(handler != null)
-		{
-			handler(sender, tData);
-		}
-	}
 
 	[SerializeField]
 	private GameManager gameManager;
@@ -91,17 +64,17 @@ public class TerritoryManager : MonoBehaviour {
 			territory.OnTerritoryEntered += (sender, e) => {
 				// Fire this scripts event
 				//Debug.Log("ThisATerritoryEntered");
-				this.ThisATerritoryEntered(sender, e);
+				this.OnATerritoryEntered(sender, e);
 			};
 			territory.OnTerritoryExited += (sender, e) => {
 				// Fire this scripts event
 				//Debug.Log("ThisATerritoryExited");
-				this.ThisATerritoryExited(sender, e);
+				this.OnATerritoryExited(sender, e);
 			};
 			territory.OnTerritoryUpdated += (sender, tData) => {
 				// Fire this scripts event
 				//Debug.Log("ThisATerritoryUpdated");
-				this.ThisATerritoryUpdated(sender, tData);
+				this.OnATerritoryUpdated(sender, tData);
 			};
 		}
 	}
