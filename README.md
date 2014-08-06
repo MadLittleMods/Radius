@@ -58,6 +58,10 @@ This project is meant to be functionally impressive example a complete game. It 
 
 # Changelog:
 
+`0.41`:
+ - Cleaned up some more event code
+ - Fixed spawning bug
+
 `0.4`:
  - Added Time Limit option
  - Updated spawn code to actually spawn correctly after the initial game
