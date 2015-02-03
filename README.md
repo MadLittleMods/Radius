@@ -2,7 +2,7 @@
 
 A Complete Unity Reference Project 
 
-This project is meant to be functionally impressive example a complete game. It is not made to be fun or interesting for a non-developer.
+This project is meant to be functionally impressive example of a complete game. It is not made to be fun or interesting for a non-developer.
 
 # Features
  - Full complete game
